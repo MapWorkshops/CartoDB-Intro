@@ -36,7 +36,7 @@ observar es apabullante
 
 ![Imagen Illustreets][illustreets]
 
-**Ordenamiento urbano**: El ayuntamiento de Córdoba, entre otros muchos, utiliza CartoDB como herramienta de ordenación urbana
+**Ordenamiento urbano**: El ayuntamiento de Córdoba, entre otros muchos, utiliza CartoDB como [herramienta de ordenación urbana](http://www.gmucordoba.es/)
 
 ![Ordenación Córdoba][cordoba]
 
@@ -48,7 +48,7 @@ observar es apabullante
 
 ![Fuga de Alcatraz][alcatraz]
 
-**Periodismo de datos**: Durante las elecciones autonómicas y municipales de 2011, RTVE realizó un mapa interactivo para tratar de descubrir si hay relaciones entre los resultados electorales municipales y datos demográficos, económicos y sociológicos desde 1987. Lo tituló *El microscopio del voto*.
+**Periodismo de datos**: Durante las elecciones autonómicas y municipales de 2011, RTVE realizó un [mapa interactivo](http://datos.rtve.es/elecciones/autonomicas-municipales) para tratar de descubrir si hay relaciones entre los resultados electorales municipales y datos demográficos, económicos y sociológicos desde 1987. Lo tituló *El microscopio del voto*.
 
 ![Elecciones 2011][elecciones2011]
 
