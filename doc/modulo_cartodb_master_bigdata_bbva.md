@@ -86,6 +86,36 @@ O un [mapa de la Tierra Media](http://johnhackworth.github.io/middle-earth/), de
 
 ![Mapa de la Tierra Media][tierra_media]
 
+
+## CartoDB: Paseo por la interfaz
+
+Podemos registrarnos en CartoDB para obtener una cuenta gratuita a través de [este enlace](https://cartodb.com/signup). Las cuentas de pago tienen algunas [funcionalidades extra muy interesantes](https://cartodb.com/pricing-features/), para los propósitos de este taller es suficiente con una cuenta gratuita.
+
+Una vez ingresamos por primera vez en CartoDB, nos encontramos con el Dashboard, desde donde podemos ver tanto nuestros mapas como nuestros datasets
+
+![Dashboard CartoDB][cartodb_dashboard]
+
+Los dos apartados principales del Dashboard son, por tanto:
+
+* Datasets: Los datos que hemos importado a nuestra cuenta.
+* Maps: Las visualizaciones que hemos creado con esos datos.
+
+![Maps y datasets][maps_y_datasets]
+
+El flujo normal de trabajo con CartoDB empieza con la creación de una nueva visualización. Es decir, un mapa. Para ello, solo tendremos que pulsar el botón *New Map*, de la interfaz
+
+![Nuevo mapa][new_map]
+
+Vamos entonces a la pantalla de creación de mapa, donde lo primero que se nos pedirá es que añadamos nuestras fuentes de datos. En este punto, tenemos varias opciones:
+
+* Connect dataset: Se nos mostrará la pestaña de importación de datos, desde donde podremos subir nuestros propios ficheros, o conectar con servicios de terceros para obtener un flujo de datos con el que trabajar. En función del tipo de cuenta que tengamos, podremos acceder a más o menos servicios de terceros
+
+* Usar dataset: Si ya tenemos datos importados, podemos usarlos para nuestro mapa. CartoDB permite crear visualizaciones multicapa de manera sencilla, así que podremos incluir varios juegos de datos ya existentes, si lo deseamos.
+
+* Data library: CartoDB pone a nuestra disposición un repositorio de datos desde donde podemos importar directamente datasets a nuestra cuenta con un solo clic.
+
+
+
 [dataviz]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/dataviz.png
 [syriarefugees]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/syrias_refugees.png
 [illustreets]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/illustreets.png
@@ -100,3 +130,6 @@ O un [mapa de la Tierra Media](http://johnhackworth.github.io/middle-earth/), de
 [sunrise]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/sunrise.png
 [starwars]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/starwars_galaxy.png
 [tierra_media]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/tierra_media.png
+[cartodb_dashboard]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_dashboard.png
+[maps_y_datasets]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/maps_y_datasets.png
+[new_map]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/new_map.png
