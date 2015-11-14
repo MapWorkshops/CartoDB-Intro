@@ -97,8 +97,8 @@ Una vez ingresamos por primera vez en CartoDB, nos encontramos con el Dashboard,
 
 Los dos apartados principales del Dashboard son, por tanto:
 
-* Datasets: Los datos que hemos importado a nuestra cuenta.
-* Maps: Las visualizaciones que hemos creado con esos datos.
+* **Datasets**: Los datos que hemos importado a nuestra cuenta.
+* **Maps**: Las visualizaciones que hemos creado con esos datos.
 
 ![Maps y datasets][maps_y_datasets]
 
@@ -108,13 +108,13 @@ El flujo normal de trabajo con CartoDB empieza con la creación de una nueva vis
 
 Vamos entonces a la pantalla de creación de mapa, donde lo primero que se nos pedirá es que añadamos nuestras fuentes de datos. En este punto, tenemos varias opciones:
 
-* Connect dataset: Se nos mostrará la pestaña de importación de datos, desde donde podremos subir nuestros propios ficheros, o conectar con servicios de terceros para obtener un flujo de datos con el que trabajar. En función del tipo de cuenta que tengamos, podremos acceder a más o menos servicios de terceros
+* **Connect dataset**: Se nos mostrará la pestaña de importación de datos, desde donde podremos subir nuestros propios ficheros, o conectar con servicios de terceros para obtener un flujo de datos con el que trabajar. En función del tipo de cuenta que tengamos, podremos acceder a más o menos servicios de terceros
 
-* Usar dataset: Si ya tenemos datos importados, podemos usarlos para nuestro mapa. CartoDB permite crear visualizaciones multicapa de manera sencilla, así que podremos incluir varios juegos de datos ya existentes, si lo deseamos.
+* **Usar dataset**: Si ya tenemos datos importados, podemos usarlos para nuestro mapa. CartoDB permite crear visualizaciones multicapa de manera sencilla, así que podremos incluir varios juegos de datos ya existentes, si lo deseamos.
 
-* Data library: CartoDB pone a nuestra disposición un repositorio de datos desde donde podemos importar directamente datasets a nuestra cuenta con un solo clic.
+* **Data library**: CartoDB pone a nuestra disposición un repositorio de datos desde donde podemos importar directamente datasets a nuestra cuenta con un solo clic.
 
-* Create empty map: Por último, podemos crear un mapa sin datos. Nos resultará útil si lo que queremos es añadir datos de manera manual, directamente sobre el mapa.
+* **Create empty map**: Por último, podemos crear un mapa sin datos. Nos resultará útil si lo que queremos es añadir datos de manera manual, directamente sobre el mapa.
 
 Para crear rápidamente un mapa, vamos a utilizar alguno de los juegos de datos ya disponibles (la opción 2 de la pantalla de creación de mapas). Por ejemplo, el que contiene las regiones administrativas de Nueva York. Simplemente, lo elegimos de la lista, y pulsamos en el botón *Create Map*, de abajo a la derecha.
 
@@ -142,7 +142,7 @@ En la vista de datos, lo que tenemos es una tabla, donde veremos nuestros datos 
 
 ![Columnas en CartoDB][table_columns]
 
-Basta con pinchar en la pequeña flecha que acompaña a los nombres de las columnas para poder ordenar la tabla siguiendo como criterio esta columna, tanto en orden ascendente como descendente. En este sentido, el editor de datos de tabla de CartoDB se comporta como Excel, y otros gestores similares de hojas de cálculo.
+Basta con pinchar en la pequeña flecha que acompaña a los nombres de las columnas para poder ordenar la tabla siguiendo como criterio esta columna, tanto en orden ascendente como descendente. En este sentido, **el editor de datos de tabla de CartoDB se comporta como Excel, y otros gestores similares de hojas de cálculo**.
 
 Veremos más adelante como, si usamos datos importados por nosotros mismos, tendremos aquí más opciones de personalización. Pudiendo cambiar incluso el tipo de dato de cada columna. Un ejemplo muy típico de la utilidad de esta funcionalidad es transformar cadenas de texto representando fechas/horas en columnas de tipo *date*. De esta forma, podremos utilizar las [funciones propias de fecha/hora de PostgreSQL](http://www.postgresql.org/docs/current/static/functions-datetime.html).
 
@@ -150,7 +150,96 @@ En la vista de tabla también observamos que hay un menú lateral en la parte de
 
 ![Menú lateral vista de tabla][side_menu_table_view]
 
+Volviendo a la vista de mapa, prestemos atención a los elementos de la interfaz que nos van a permitir actualmente sobre la visualización. El primero de ellos es la barra de herramientas de la parte superior izquierda
 
+![Barra de herramientas de mapa][map_tool_bar]
+
+En dicha barra de herramientas, se nos permitirá añadir ciertos *adornos* a nuestro mapa:
+
+* Un título
+* Un cuadro de texto
+* Una anotación
+* Una Imagen
+
+![Barra de herramientas de mapa desplegada][map_toolbar_options]
+
+Como una imagen vale más que mil palabras, éste es el aspecto de cada uno de los elementos que podemos añadir
+
+![Elementos añadidos al mapa][map_addons]
+
+También podremos previsualizar nuestro mapa en escritorio o dispositivo móvil
+
+![Barra de herramientas previsualizar][map_preview_option]
+
+Así es como se vería nuestro mapa en un dispositivo móvil
+
+![Visualización en móvil][map_preview_mobile]
+
+Por último, también podremos exportar nuestra visualización como una imagen, pudiendo elegir qué parte del mapa queremos exportar
+
+![Exportando mapa como imagen][map_export_as_img]
+
+Vayamos ahora a por las herramientas que podemos encontrar en la parte inferior del mapa:
+
+* Cambio de mapa base
+* Opciones
+
+![Barra de herramientas inferior][map_tool_bar2]
+
+La primera opción nos permite cambiar las teselas que componen nuestro mapa base, teniendo una gran variedad para elegir
+
+![Cambiar mapa base][change_basemap]
+
+Podemos elegir los mapas base propios de CartoDB, mapas base desarrollados por [Stamen](http://stamen.com/) o mapas base desarrollados por Nokia, para su servicio [Nokia Here](https://www.here.com). Es importante destacar que, si elegimos descargarnos CartoDB desde [su repositorio](https://github.com/CartoDB/cartodb) (no olvidemos que es un proyecto Open Source), sepamos que **no tendremos disponibles los mapas base de Nokia**. El servicio de mapas base de Nokia es un servicio de pago, y solo está disponible en [la versión SaaS de CartoDB](http://cartodb.com/).
+
+Así es como se ve nuestro mapa utilizando *Toner*, de Stamen, como mapa base
+
+![Mapa base toner][toner_basemap]
+
+Es también interesante detenerse rápidamente sobre las 3 últimas opciones de mapas base:
+
+* **Others**: Aquí aparecerán mapas base que hayamos construído nosotros, usando la última de las 3 opciones
+* **Custom**: Aquí aparecerán diseños que no son necesariamente mapas. Si pulsamos en el boton etiquetado como *IMG*, se nos abrirá una pantalla que nos permitirá elegir un patrón de fondo predefinido, subir una imagen para utilizarla como fondo, o enlazar imágenes que guardemos en Dropbox.
+
+![Elegir patrón o imagen como mapa base][map_background_pattern_select]
+
+Así es como queda uno de los patrones predefinidos como fondo
+
+![Patrón como mapa base][map_background_pattern]
+
+* **Yours**: Esta opción nos permite añadir nuestro propio servidor de teselas, entre una variedad de opciones (XYZ, WMS/WMTS, NASA, Mapbox, TileJSON)
+
+![Elegir servidor de teselas personalizado][custom_tile_server_select]
+
+Explicar lo que significa cada una de estas opciones excede del alcance de este taller. Como introducción a este tema, se puede consultar [esta entrada](http://blog.cartodb.com/tiles-on-gcs/) del blog de CartoDB, donde se explica cómo construir un servidor de teselas a partir de imágenes almacenadas en Google Maps Engine. En él se repasan algunos conceptos importantes para entender lo que es un servidor de teselas.
+
+Otro enlace interesante al respecto de este asunto, es [este Gist](https://gist.github.com/tmcw/4954720) de Tom MacWright, uno de los fundadores de [Mapbox](https://www.mapbox.com/), otra excelente plataforma online para la creación de mapas. En el enlace, se explica la diferencia entre los esquemas XYZ y TMS de los servidores de teselas.
+
+Para terminar con los controles de mapa, podemos cambiar qué elementos queremos que aparezcan en nuestra visualización y cuáles no usando el cuadro *Options*, de la barra inferior de herramientas
+
+![Elegir qué elementos queremos mostrar en el mapa][map_options_show]
+
+Es importante tener en cuenta que estas opciones podrán ser *anuladas* programáticamente con la librería CartoDB.js. Algo que veremos más adelante.
+
+Si volvemos a la parte superior de la pantalla, nos fijamos en dos opciones más:
+
+* **Edit**: Desde aquí podremos realizar algunas operaciones sobre nuestro mapa, como exportar sus capas, georeferenciarlas (lo veremos con más detenimiento más adelante), crear una copia de nuestro mapa, cambiar su privacidad, bloquearlo o borrarlo
+
+![Opciones de edición de mapa][map_edit_options]
+
+Con la opción de exportado, podremos exportar nuestras tablas de datos en diversos formatos. Muy útiles para intercambio de datos.
+
+![Formatos de exportado][export_formats]
+
+Otra opción muy interesante es la de cambio de privacidad. Con ella podremos controlar quién accede a nuestros mapas.
+
+Por último, destacar que la opción de borrado de mapa **solo borra la visualización que hayamos construído, no borra nuestros datos**
+
+![Opciones de privacidad][privacy_options]
+
+* **Publish**: Desde aquí podremos compartir nuestro mapa de 3 maneras: con un simple enlace, que podremos mandar a quién queramos, siempre teniendo en cuenta las opciones de privacidad que hayamos elegido, con un código HTML listo para embeber en cualquier página web, y como un descriptor en formato JSON, que es el que nos permitirá progamar aplicaciones que incluyan nuestra visualización de mapa, como veremos en capítulos siguientes.
+
+![Opciones de publicación][publish_options]
 
 # Creación de Mapas
 
@@ -244,6 +333,23 @@ TODO
 [table_columns]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/table_columns.png
 [side_menu_table_view]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/side_menu_table_view.png
 [side_menu_map_view]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/side_menu_map_view.png
+[map_tool_bar]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_tool_bar.png
+[map_toolbar_options]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_toolbar_options.png
+[map_addons]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_addons.png
+[map_preview_option]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_preview_option.png
+[map_preview_mobile]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_preview_mobile.png
+[map_export_as_img]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_export_as_img.png
+[map_tool_bar2]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_tool_bar2.png
+[change_basemap]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/change_basemap.png
+[toner_basemap]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/toner_basemap.png
+[map_background_pattern_select]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_background_pattern_select.png
+[map_background_pattern]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_background_pattern.png
+[custom_tile_server_select]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/custom_tile_server_select.png
+[map_options_show]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_options_show.png
+[map_edit_options]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_edit_options.png
+[export_formats]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/export_formats.png
+[privacy_options]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/privacy_options.png
+[publish_options]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/publish_options.png
 [cartodb_column_filters]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_column_filters.png
 [cartodb_filter_column]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_filter_column.png
 [cartodb_column_filter_range]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_column_filter_range.png
