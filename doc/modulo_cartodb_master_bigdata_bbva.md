@@ -180,11 +180,11 @@ Además, se nos presenta la opción de **crear un nuevo juego de datos** en base
 
 Si el campo sobre el que queremos aplicar el filtro es de tipo *string*, lo que nos aparece es un listado de todos los posibles valores que esa cadena de texto adopta en nuestro juego de datos, junto con el número de veces que aparece.
 
-![Filtro de columna de texto][cartodb_column_filter_text.png]
+![Filtro de columna de texto][cartodb_column_filter_text]
 
 Si lo preferimos, podemos implementar este filtro de manera que solo nos quedemos con los registros cuya columna contenga un texto que nosotros mismos especifiquemos. Para ello, solo tendremos que desactivar el interruptor de *View as list*, y aparecerá un campo de texto donde podremos escribir nuestro filtro personalizado.
 
-![Filtro de columna de texto personalizado][cartodb_column_filter_text2.png]
+![Filtro de columna de texto personalizado][cartodb_column_filter_text2]
 
 La otra manera de filtrar los datos es escribiendo nosotros directamente la consulta SQL, pero eso lo veremos más adelante.
 
