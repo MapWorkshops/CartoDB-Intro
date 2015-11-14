@@ -247,7 +247,17 @@ Para terminar este apartado, solo vamos a mencionar que, en la vista de mapas, e
 
 # Creación de Mapas
 
-TODO
+Ya que conocemos la interfaz de CartoDB, vamos a empezar a trabajar en serio con la herramienta. Para ello, crearemos una visualización de las estaciones de [Bicimad](http://www.bicimad.com/) y los ciclocarriles de la ciudad de Madrid. Dicha visualización constará de 3 capas:
+
+* [Capa con **distritos de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/distritos_madrid.geojson), obtenida de la biblioteca de datos de CartoDB. Se trata de un conjunto de datos en formato polígono.
+* [Capa con **ciclocarriles de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.geojson), obtenida de la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=435a7cd5de319410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos en formato línea.
+* [Capa con **estaciones de Bicimad**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/gbicimad.geojson), obtenida también de la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=f17b841a2c7d6410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos de puntos.
+
+Con estos tres ejemplos, cubriremos los principales tipos de datos con los que trabajan las bases de datos espaciales.
+
+Adicionalmente, creamos un segundo mapa que contenga un solo conjunto de datos, mostrando [trazas de un viaje en bicicleta entre dos puntos de Madrid](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/home_to_job.geojson). Con este conjunto de datos, construiremos una visualización dinámica para mostrar en nuestro mapa.
+
+Comencemos con la importación de datos.
 
 # Trabajando con datos
 
@@ -311,51 +321,51 @@ TODO
 
 
 
-[dataviz]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/dataviz.png
-[syriarefugees]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/syrias_refugees.png
-[illustreets]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/illustreets.png
-[global_forest_watch]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/global_forest_watch.png
-[alcatraz]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/alcatraz.png
-[elecciones2011]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/elecciones_2011.png
-[polucionla]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/polucion_la.png
-[quitanieves]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/quitanieves.png
-[cordoba]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cordoba.png
-[beyonce]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/beyonce.png
-[lisbon2014]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/lisbon2014.png
-[sunrise]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/sunrise.png
-[starwars]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/starwars_galaxy.png
-[tierra_media]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/tierra_media.png
-[cartodb_dashboard]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_dashboard.png
-[maps_y_datasets]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/maps_y_datasets.png
-[new_map]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/new_map.png
-[new_map_from_library]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/new_map_from_library.png
-[pol_map]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/pol_map.png
-[map_name]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_name.png
-[map_metadata]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_metadata.png
-[switch_views]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/switch_views.png
-[table_columns]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/table_columns.png
-[side_menu_table_view]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/side_menu_table_view.png
-[side_menu_map_view]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/side_menu_map_view.png
-[map_tool_bar]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_tool_bar.png
-[map_toolbar_options]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_toolbar_options.png
-[map_addons]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_addons.png
-[map_preview_option]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_preview_option.png
-[map_preview_mobile]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_preview_mobile.png
-[map_export_as_img]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_export_as_img.png
-[map_tool_bar2]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_tool_bar2.png
-[change_basemap]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/change_basemap.png
-[toner_basemap]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/toner_basemap.png
-[map_background_pattern_select]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_background_pattern_select.png
-[map_background_pattern]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_background_pattern.png
-[custom_tile_server_select]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/custom_tile_server_select.png
-[map_options_show]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_options_show.png
-[map_edit_options]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_edit_options.png
-[export_formats]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/export_formats.png
-[privacy_options]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/privacy_options.png
-[publish_options]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/publish_options.png
-[cartodb_column_filters]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_column_filters.png
-[cartodb_filter_column]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_filter_column.png
-[cartodb_column_filter_range]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_column_filter_range.png
-[create_dataset_from_query]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/create_dataset_from_query.png
-[cartodb_column_filter_text]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_column_filter_text.png
-[cartodb_column_filter_text2]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_column_filter_text2.png
+[dataviz]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/dataviz.png
+[syriarefugees]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/syrias_refugees.png
+[illustreets]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/illustreets.png
+[global_forest_watch]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/global_forest_watch.png
+[alcatraz]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/alcatraz.png
+[elecciones2011]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/elecciones_2011.png
+[polucionla]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/polucion_la.png
+[quitanieves]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/quitanieves.png
+[cordoba]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cordoba.png
+[beyonce]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/beyonce.png
+[lisbon2014]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/lisbon2014.png
+[sunrise]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/sunrise.png
+[starwars]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/starwars_galaxy.png
+[tierra_media]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/tierra_media.png
+[cartodb_dashboard]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_dashboard.png
+[maps_y_datasets]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/maps_y_datasets.png
+[new_map]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/new_map.png
+[new_map_from_library]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/new_map_from_library.png
+[pol_map]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/pol_map.png
+[map_name]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_name.png
+[map_metadata]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_metadata.png
+[switch_views]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/switch_views.png
+[table_columns]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/table_columns.png
+[side_menu_table_view]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/side_menu_table_view.png
+[side_menu_map_view]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/side_menu_map_view.png
+[map_tool_bar]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_tool_bar.png
+[map_toolbar_options]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_toolbar_options.png
+[map_addons]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_addons.png
+[map_preview_option]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_preview_option.png
+[map_preview_mobile]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_preview_mobile.png
+[map_export_as_img]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_export_as_img.png
+[map_tool_bar2]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_tool_bar2.png
+[change_basemap]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/change_basemap.png
+[toner_basemap]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/toner_basemap.png
+[map_background_pattern_select]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_background_pattern_select.png
+[map_background_pattern]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_background_pattern.png
+[custom_tile_server_select]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/custom_tile_server_select.png
+[map_options_show]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_options_show.png
+[map_edit_options]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_edit_options.png
+[export_formats]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/export_formats.png
+[privacy_options]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/privacy_options.png
+[publish_options]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/publish_options.png
+[cartodb_column_filters]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filters.png
+[cartodb_filter_column]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_filter_column.png
+[cartodb_column_filter_range]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filter_range.png
+[create_dataset_from_query]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/create_dataset_from_query.png
+[cartodb_column_filter_text]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filter_text.png
+[cartodb_column_filter_text2]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filter_text2.png
