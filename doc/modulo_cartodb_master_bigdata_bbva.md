@@ -114,6 +114,80 @@ Vamos entonces a la pantalla de creación de mapa, donde lo primero que se nos p
 
 * Data library: CartoDB pone a nuestra disposición un repositorio de datos desde donde podemos importar directamente datasets a nuestra cuenta con un solo clic.
 
+* Create empty map: Por último, podemos crear un mapa sin datos. Nos resultará útil si lo que queremos es añadir datos de manera manual, directamente sobre el mapa.
+
+De las cuatro opciones, veremos con más detenimiento en la siguiente sección la primera de ellas, *Connect dataset*.
+
+Por ahora, vamos a proseguir con el resto de elementos de la interfaz, empezando con lo principal: **los mapas**.
+
+Para crear rápidamente un mapa, vamos a utilizar alguno de los juegos de datos ya disponibles (la opción 2 de la pantalla de creación de mapas). Por ejemplo, el que contiene las regiones administrativas de Nueva York. Simplemente, lo elegimos de la lista, y pulsamos en el botón *Create Map*, de abajo a la derecha.
+
+![Crear mapa a partir de datos existentes][new_map_from_library]
+
+Tras unos segundos, seremos llevados a nuestra vista de mapa, desde donde podremos ver la visualización recién creada. En este caso, un mapa de polígonos
+
+![Mapa de polígonos][pol_map]
+
+Vayamos parte por parte, viendo lo que significa cada elemento en pantalla.
+
+En la parte superior izquierda, tenemos el nombre del mapa. Como nuestro dataset.
+
+![Nombre del mapa][map_name]
+
+A través del enlace *Edit metadata*, también podremos añadir algunos metadatos a nuestro mapa, que nos ayudará a tener nuestros datos categorizados y fácilmente accesibles
+
+![Metadatos del mapa][map_metadata]
+
+En la parte superior central, tenemos los botones para cambiar entre vista de mapa y vista de datos
+
+![Cambio entre vista de mapa y de datos][switch_views]
+
+En la vista de datos, lo que tenemos es una tabla, donde podremos editar manualmente nuestras filas y columnas, si lo deseamos.
+
+![Columnas en CartoDB][table_columns]
+
+Basta con pinchar en la pequeña flecha que acompaña a los nombres de las columnas para poder editar ciertos aspectos de las mismas, como el nombre o el tipo de dato. O incluso ordenar la tabla siguiendo como criterio esta columna, tanto en orden ascendente como descendente.
+
+En este sentido, el editor de datos de tabla de CartoDB se comporta como Excel, y otros gestores similares de hojas de cálculo.
+
+Vale la pena detenerse unos instantes en el menú lateral derecho que se nos ofrece en la vista de tabla, aunque volveremos a él más tarde, cuando revisemos la vista de mapa.
+
+![Menú lateral vista de tabla][side_menu_table_view]
+
+En este menú tenemos, desde arriba hacia abajo:
+
+* la opción de añadir un nuevo juego de datos, que nos llevará a la misma pantalla de carga de datos que ya hemos mencionado.
+* la opción de ejecutar una consulta SQL. Esta opción está también presente en la vista de mapa, y nos permite ejecutar cualquier consulta SQL permitida por [PostgreSQL](http://www.postgresql.org/) y [PostGIS](http://postgis.net/), que constituyen realmente la base de CartoDB. Veremos este tema más detenidamente en secciones posteriores.
+* la opción de filtrado por columnas, que es la que más nos interesa ahora mismo.
+
+![Filtros de columnas][cartodb_column_filters]
+
+La opción de filtros de columna es una poderosa herramienta para explorar la naturaleza de nuestros datos
+
+Al entrar en la pestaña de filtros por columnas, lo primero que podemos hacer será elegir la columna sobre la que queremos aplicar filtros. En nuestro ejemplo, vamos a filtrar por el campo *county_fip*, que es de tipo numérico.
+
+![Filtro de columna][cartodb_filter_column]
+
+Lo que vemos es que se nos construye un histograma, donde podemos limitar el rango de valores que queremos que aparezcan.
+
+![Filtro de columna numérica][cartodb_column_filter_range]
+
+En el momento de aplicar un filtro, lo que está sucediendo internamente es que se está lanzando una consulta SQL a CartoDB, y las columnas que vemos son el resultado de dicha consulta. Es el equivalente a aplicar un *WHERE*, en terminología SQL.
+
+Además, se nos presenta la opción de **crear un nuevo juego de datos** en base a la consulta generada, o eliminar los filtros y volvernos a quedar con todas las filas.
+
+![Crear tabla a partir de resultado de consulta][create_dataset_from_query]
+
+Si el campo sobre el que queremos aplicar el filtro es de tipo *string*, lo que nos aparece es un listado de todos los posibles valores que esa cadena de texto adopta en nuestro juego de datos, junto con el número de veces que aparece.
+
+![Filtro de columna de texto][cartodb_column_filter_text.png]
+
+Si lo preferimos, podemos implementar este filtro de manera que solo nos quedemos con los registros cuya columna contenga un texto que nosotros mismos especifiquemos. Para ello, solo tendremos que desactivar el interruptor de *View as list*, y aparecerá un campo de texto donde podremos escribir nuestro filtro personalizado.
+
+![Filtro de columna de texto personalizado][cartodb_column_filter_text2.png]
+
+La otra manera de filtrar los datos es escribiendo nosotros directamente la consulta SQL, pero eso lo veremos más adelante.
+
 
 
 [dataviz]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/dataviz.png
@@ -133,3 +207,16 @@ Vamos entonces a la pantalla de creación de mapa, donde lo primero que se nos p
 [cartodb_dashboard]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_dashboard.png
 [maps_y_datasets]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/maps_y_datasets.png
 [new_map]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/new_map.png
+[new_map_from_library]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/new_map_from_library.png
+[pol_map]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/pol_map.png
+[map_name]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_name.png
+[map_metadata]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/map_metadata.png
+[switch_views]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/switch_views.png
+[table_columns]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/table_columns.png
+[side_menu_table_view]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/side_menu_table_view.png
+[cartodb_column_filters]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_column_filters.png
+[cartodb_filter_column]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_filter_column.png
+[cartodb_column_filter_range]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_column_filter_range.png
+[create_dataset_from_query]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/create_dataset_from_query.png
+[cartodb_column_filter_text]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_column_filter_text.png
+[cartodb_column_filter_text2]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_column_filter_text2.png
