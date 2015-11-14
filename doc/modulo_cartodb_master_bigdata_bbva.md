@@ -211,7 +211,7 @@ Así es como queda uno de los patrones predefinidos como fondo
 
 ![Elegir servidor de teselas personalizado][custom_tile_server_select]
 
-Explicar lo que significa cada una de estas opciones excede del alcance de este taller. Como introducción a este tema, se puede consultar [esta entrada](http://blog.cartodb.com/tiles-on-gcs/) del blog de CartoDB, donde se explica cómo construir un servidor de teselas a partir de imágenes almacenadas en Google Maps Engine. En él se repasan algunos conceptos importantes para entender lo que es un servidor de teselas.
+Explicar lo que significa cada una de estas opciones excede del alcance de este taller. Como introducción a este tema, se puede consultar [esta entrada](http://blog.cartodb.com/tiles-on-gcs/) del blog de CartoDB, donde se explica cómo construir un servidor de teselas a partir de imágenes almacenadas en [Google Maps Engine (ahora llamado My Maps)](https://www.google.com/maps/d/u/0/). En él se repasan algunos conceptos importantes para entender lo que es un servidor de teselas.
 
 Otro enlace interesante al respecto de este asunto, es [este Gist](https://gist.github.com/tmcw/4954720) de Tom MacWright, uno de los fundadores de [Mapbox](https://www.mapbox.com/), otra excelente plataforma online para la creación de mapas. En el enlace, se explica la diferencia entre los esquemas XYZ y TMS de los servidores de teselas.
 
