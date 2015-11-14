@@ -116,10 +116,6 @@ Vamos entonces a la pantalla de creación de mapa, donde lo primero que se nos p
 
 * Create empty map: Por último, podemos crear un mapa sin datos. Nos resultará útil si lo que queremos es añadir datos de manera manual, directamente sobre el mapa.
 
-De las cuatro opciones, veremos con más detenimiento en la siguiente sección la primera de ellas, *Connect dataset*.
-
-Por ahora, vamos a proseguir con el resto de elementos de la interfaz, empezando con lo principal: **los mapas**.
-
 Para crear rápidamente un mapa, vamos a utilizar alguno de los juegos de datos ya disponibles (la opción 2 de la pantalla de creación de mapas). Por ejemplo, el que contiene las regiones administrativas de Nueva York. Simplemente, lo elegimos de la lista, y pulsamos en el botón *Create Map*, de abajo a la derecha.
 
 ![Crear mapa a partir de datos existentes][new_map_from_library]
@@ -142,27 +138,37 @@ En la parte superior central, tenemos los botones para cambiar entre vista de ma
 
 ![Cambio entre vista de mapa y de datos][switch_views]
 
-En la vista de datos, lo que tenemos es una tabla, donde podremos editar manualmente nuestras filas y columnas, si lo deseamos.
+En la vista de datos, lo que tenemos es una tabla, donde veremos nuestros datos ordenados por filas y columnas.
 
 ![Columnas en CartoDB][table_columns]
 
-Basta con pinchar en la pequeña flecha que acompaña a los nombres de las columnas para poder editar ciertos aspectos de las mismas, como el nombre o el tipo de dato. O incluso ordenar la tabla siguiendo como criterio esta columna, tanto en orden ascendente como descendente.
+Basta con pinchar en la pequeña flecha que acompaña a los nombres de las columnas para poder ordenar la tabla siguiendo como criterio esta columna, tanto en orden ascendente como descendente. En este sentido, el editor de datos de tabla de CartoDB se comporta como Excel, y otros gestores similares de hojas de cálculo.
 
-En este sentido, el editor de datos de tabla de CartoDB se comporta como Excel, y otros gestores similares de hojas de cálculo.
+Veremos más adelante como, si usamos datos importados por nosotros mismos, tendremos aquí más opciones de personalización. Pudiendo cambiar incluso el tipo de dato de cada columna. Un ejemplo muy típico de la utilidad de esta funcionalidad es transformar cadenas de texto representando fechas/horas en columnas de tipo *date*. De esta forma, podremos utilizar las [funciones propias de fecha/hora de PostgreSQL](http://www.postgresql.org/docs/current/static/functions-datetime.html).
 
-Vale la pena detenerse unos instantes en el menú lateral derecho que se nos ofrece en la vista de tabla, aunque volveremos a él más tarde, cuando revisemos la vista de mapa.
+En la vista de tabla también observamos que hay un menú lateral en la parte derecha. En los siguientes apartados veremos para qué sirven las opciones de este menú. Por ahora, basta con saber que, en la vista de tabla, sirve para ayudarnos a filtrar nuestros datos.
 
 ![Menú lateral vista de tabla][side_menu_table_view]
 
-En este menú tenemos, desde arriba hacia abajo:
+
+
+# Creación de Mapas
+
+TODO
+
+# Trabajando con datos
+
+TODO
+
+## Filtrando datos: Pestaña de filtros
+
+Como ya dijimos anteriormente, el menú lateral derecho de la vista de tabla nos ayudará a filtrar nuestros datos. En este menú tenemos, desde arriba hacia abajo:
 
 * la opción de añadir un nuevo juego de datos, que nos llevará a la misma pantalla de carga de datos que ya hemos mencionado.
 * la opción de ejecutar una consulta SQL. Esta opción está también presente en la vista de mapa, y nos permite ejecutar cualquier consulta SQL permitida por [PostgreSQL](http://www.postgresql.org/) y [PostGIS](http://postgis.net/), que constituyen realmente la base de CartoDB. Veremos este tema más detenidamente en secciones posteriores.
-* la opción de filtrado por columnas, que es la que más nos interesa ahora mismo.
+* la opción de filtrado por columnas, que es la manera más sencilla de filtrar nuestros datos, y la que veremos ahora mismo.
 
 ![Filtros de columnas][cartodb_column_filters]
-
-La opción de filtros de columna es una poderosa herramienta para explorar la naturaleza de nuestros datos
 
 Al entrar en la pestaña de filtros por columnas, lo primero que podemos hacer será elegir la columna sobre la que queremos aplicar filtros. En nuestro ejemplo, vamos a filtrar por el campo *county_fip*, que es de tipo numérico.
 
@@ -186,7 +192,30 @@ Si lo preferimos, podemos implementar este filtro de manera que solo nos quedemo
 
 ![Filtro de columna de texto personalizado][cartodb_column_filter_text2]
 
-La otra manera de filtrar los datos es escribiendo nosotros directamente la consulta SQL, pero eso lo veremos más adelante.
+La otra manera de filtrar los datos es escribiendo nosotros directamente la consulta SQL, pero eso lo veremos más adelante, como ya se ha mencionado.
+
+
+
+## Trabajar con datos geoespaciales
+
+TODO (geometrías, proyecciones...)
+
+## Filtrando datos: SQL geoespacial
+
+TODO
+
+## Mezclando fuentes
+
+TODO
+
+## Geocoding
+
+TODO
+
+
+# Usando CartoDB en nuestros desarrollos
+
+# Otras librerías de mapas
 
 
 
@@ -214,6 +243,7 @@ La otra manera de filtrar los datos es escribiendo nosotros directamente la cons
 [switch_views]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/switch_views.png
 [table_columns]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/table_columns.png
 [side_menu_table_view]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/side_menu_table_view.png
+[side_menu_map_view]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/side_menu_map_view.png
 [cartodb_column_filters]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_column_filters.png
 [cartodb_filter_column]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_filter_column.png
 [cartodb_column_filter_range]: https://raw.githubusercontent.com/MapWorkshops/bbva/master/doc/img/cartodb_column_filter_range.png
