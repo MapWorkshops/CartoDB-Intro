@@ -249,23 +249,118 @@ Para terminar este apartado, solo vamos a mencionar que, en la vista de mapas, e
 
 Ya que conocemos la interfaz de CartoDB, vamos a empezar a trabajar en serio con la herramienta. Para ello, crearemos una visualización de las estaciones de [Bicimad](http://www.bicimad.com/) y los ciclocarriles de la ciudad de Madrid. Dicha visualización constará de 3 capas:
 
-* [Capa con **distritos de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/distritos_madrid.geojson), obtenida de la biblioteca de datos de CartoDB. Se trata de un conjunto de datos en formato polígono.
+* [Capa con **distritos de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/distritos_madrid_nogeo.csv), obtenida de la biblioteca de datos de CartoDB. Se trata de un conjunto de datos en formato polígono.
 * [Capa con **ciclocarriles de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.geojson), obtenida de la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=435a7cd5de319410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos en formato línea.
-* [Capa con **estaciones de Bicimad**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/gbicimad.geojson), obtenida también de la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=f17b841a2c7d6410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos de puntos.
+* [Capa con **estaciones de Bicimad**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/gbicimad_nogeo.csv), obtenida también de la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=f17b841a2c7d6410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos de puntos.
 
 Con estos tres ejemplos, cubriremos los principales tipos de datos con los que trabajan las bases de datos espaciales.
 
-Adicionalmente, creamos un segundo mapa que contenga un solo conjunto de datos, mostrando [trazas de un viaje en bicicleta entre dos puntos de Madrid](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/home_to_job.geojson). Con este conjunto de datos, construiremos una visualización dinámica para mostrar en nuestro mapa.
+Adicionalmente, creamos un segundo mapa que contenga un solo conjunto de datos, mostrando [trazas de un viaje en bicicleta entre dos puntos de Madrid](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/home_to_job_nodate.csv). Con este conjunto de datos, construiremos una visualización dinámica para mostrar en nuestro mapa.
 
 Comencemos con la importación de datos.
 
 # Trabajando con datos
 
+Cuando trabajamos con datos de fuentes externas, es muy común que nos enfrentemos a problemas como:
+
+* Datos en diferentes formatos (CSV, Excel, JSON, SHP, KML, etc)
+* Datos sin geolocalizar
+* Datos con errores topológicos
+* Datos sin contextualizar (ej: todas las columnas se interpretan como cadenas de texto)
+* ...
+
+Es labor del profesional GIS el preveer, entender y solucionar esos contratiempos. Existen herramientas que facilitan nuestra labor. CartoDB es una de ellas.
+
+Para empezar, vamos a crear nuestro mapa, usando como fuentes de datos las 3 capas que hemos mencionado:
+
+* [Distritos de la ciudad de Madrid](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/distritos_madrid_nogeo.csv)
+* [Ciclocarriles de la ciudad de Madrid](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.geojson)
+* [Estaciones de Bicimad](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/gbicimad_nogeo.csv)
+
+### Creando nuestro mapa: importando puntos
+
+Para ello, basta con que creemos un mapa nuevo, y añadamos, para empezar, la capa de estaciones de Bicimad. Lo haremos en base a lo que hemos aprendido en el capítulo de *Un paseo por la interfaz de CartoDB*
+
+Una vez tenemos creado nuestro mapa, nos encontramos con algo extraño: no vemos los puntos:
+
+![Mapa erróneo sin puntos][map_no_points]
+
+¿Qué es lo que está sucediendo? Algo pasa con nuestros datos.
+
+Al ir a la vista de mapa, nos encontramos con el problema principal: **la columna de tipo geométrico tiene un valor nulo**. Por eso no vemos ningún punto en el mapa.
+
+![Columna geométrica nula][geom_column_null]
+
+Lo que debemos hacer es **geolocalizar nuestros datos**. Para ello, como ya vimos en el capítulo de *Un paseo por la interfaz de CartoDB*, utilizaremos la herramienta de geolocalización integrada. Tenemos la suerte de contar con columnas que contienen latitud y longitud, así que las usaremos para nuestra geolocalización.
+
+![Columnas con latitud y longitud][lat_lng_cols]
+
+Al entrar en el geolocalizador, se nos informa de que nuestra capa no contiene datos geométricos, algo que ya sabíamos. Y la primera opción que se nos ofrece es utilizar columnas que contengan latitud y longitud para la georeferencia. Seleccionamos nuestras columnas *lat* y *lng* y pulsamos en el botón de *Continue*
+
+![Geolocalización con latitud y longitud][lat_lng_geoloc]
+
+Tras unos breves instantes (nuestro conjunto de datos es bastante pequeño, y no tarda demasiado), comprobamos como la columna de tipo geométrico ha sido correctamente geolocalizada.
+
+![Columna the_geom geolocalizada][geom_column_updated]
+
+Destaquemos el detalle de que el geolocalizador ha funcionado **incluso cuando las columnas *lat* y *lng* eran de tipo *string*.**. De todas formas, dado que este conjunto de datos lo hemos importado nosotros, **se nos permite cambiar el tipo de dato de la columna a *number*, más correcto en este caso**.
+
+![Cambio de tipo de dato en columna][change_column_type]
+
+Por supuesto, estas operaciones que CartoDB hace por nosotros, tienen su contrapartida en lenguaje SQL. Desde el menú lateral derecho, podríamos haber elegido la pestaña de SQL (lo veremos más adelante detenidamente) y ejecutar las siguientes consultas
+
+Para rellenar la columna geométrica
+
+```sql
+update gbicimad_nogeo set the_geom=CDB_LatLng(lat, lng)
+```
+
+Donde CDB_LatLng es una función propia de CartoDB, construida sobre PostGIS, y cuyo código podemos ver [aquí](https://github.com/CartoDB/cartodb-postgresql/blob/master/scripts-available/CDB_LatLng.sql). Veremos algo más sobre PostGIS y lenguaje SQL más adelante.
+
+En cuanto al cambio de tipo de dato *string* por *number*, se podría haber hecho así
+
+```sql
+alter table gbicimad_nogeo alter column lat type numeric;
+alter table gbicimad_nogeo alter column lng type numeric;
+```
+
+Si ahora cambiamos a la vista de mapa, ya aparecen los puntos. Y también observamos algo muy interesante: **CartoDB nos sugiere qué tipo de mapa es apropiado, tras analizar nuestro conjunto de datos**. Esta funcionalidad es excepionalmente útil para analistas de datos geográficos, que quieren extraer información o construir historias basadas en datos geolocalizados.
+
+![CartoDB sugiere mapa a construir][cartodb_suggests_map]
+
+Tras pedirle que nos muestre la sugerencia, CartoDB nos informa de que un **mapa de calor** es el que más sentido tiene construir con nuestros datos de manera aislada.
+
+![CartoDB sugiere mapa de calor][cartodb_suggests_heatmap]
+
+Si aceptamos la sugerencia, automáticamente se construye un mapa de calor. Incluso, si desplegamos el menú lateral derecho para comprobar los parámetros, vemos que **CartoDB ha elegido unos parámetros por nosotros**.
+
+![CartoDB construye mapa de calor][cartodb_builds_heatmap]
+
+Posiblemente CartoDB tenga razón, y este sea el mejor mapa a construir con nuestros datos aislados. Pero nosotros nos vamos a quedar con el mapa sencillo de puntos, para los propositos de este tutorial. Asi que, en el propio *wizard* donde estamos viendo los parámetros del mapa de calor construido, nos movemos con las flechas hasta elegir la visualización *simple*, y vemos que los puntos vuelven a aparecer en el mapa.
+
+![Mapa de puntos seleccionado][point_map_selected]
+
+Más adelante veremos la utilidad del menú lateral y los tipos de mapa. Por ahora, sigamos importando nuestros datos.
+
+### Creando nuestro mapa: importando líneas
+
+Para importar nuestra capa de líneas con los ciclocarriles de Madrid, pinchamos en el signo *+* de color azul que hay en la parte superior del menú lateral derecho.
+
+![Nueva capa][add_new_layer]
+
+Volveremos a ver la pantalla de importanción de datos, donde podremos arrastrar nuestro [fichero de líneas](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.geojson)
+
+### Creando nuestro mapa: importando polígonos
+
 TODO
+
+
 
 ## Filtrando datos: Pestaña de filtros
 
-Como ya dijimos anteriormente, el menú lateral derecho de la vista de tabla nos ayudará a filtrar nuestros datos. En este menú tenemos, desde arriba hacia abajo:
+Como ya dijimos anteriormente, el menú lateral derecho de la vista de tabla nos ayudará a filtrar nuestros datos. Para entender cómo funcionan los filtros en CartoDB, vamos a utilizar el conjunto de datos de distritos de Madrid, que ya tenemos importado y geolocalizado.
+
+Entramos en la vista de tabla de nuestros datos, y fijamos nuestra atención en el menú lateral de la parte derecha. En este menú tenemos, desde arriba hacia abajo:
 
 * la opción de añadir un nuevo juego de datos, que nos llevará a la misma pantalla de carga de datos que ya hemos mencionado.
 * la opción de ejecutar una consulta SQL. Esta opción está también presente en la vista de mapa, y nos permite ejecutar cualquier consulta SQL permitida por [PostgreSQL](http://www.postgresql.org/) y [PostGIS](http://postgis.net/), que constituyen realmente la base de CartoDB. Veremos este tema más detenidamente en secciones posteriores.
@@ -273,7 +368,7 @@ Como ya dijimos anteriormente, el menú lateral derecho de la vista de tabla nos
 
 ![Filtros de columnas][cartodb_column_filters]
 
-Al entrar en la pestaña de filtros por columnas, lo primero que podemos hacer será elegir la columna sobre la que queremos aplicar filtros. En nuestro ejemplo, vamos a filtrar por el campo *county_fip*, que es de tipo numérico.
+Al entrar en la pestaña de filtros por columnas, lo primero que podemos hacer será elegir la columna sobre la que queremos aplicar filtros. En nuestro ejemplo, vamos a filtrar por el campo *shape_area*, que es de tipo numérico.
 
 ![Filtro de columna][cartodb_filter_column]
 
@@ -305,6 +400,8 @@ TODO (geometrías, proyecciones...)
 ## Filtrando datos: SQL geoespacial
 
 TODO
+
+(Aquí, ademas de queries geoespaciales, mostrar que, por ejemplo, podemos obtener solo los campos que necesitamos a través de la consulta SQL, obviando el resto. Por ejemplo, no queremos para nada los campos lat y lng de la capa de puntos, o la mayoría de campos de la capa de líneas)
 
 ## Mezclando fuentes
 
@@ -369,3 +466,14 @@ TODO
 [create_dataset_from_query]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/create_dataset_from_query.png
 [cartodb_column_filter_text]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filter_text.png
 [cartodb_column_filter_text2]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filter_text2.png
+[map_no_points]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_no_points.png
+[geom_column_null]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/geom_column_null.png
+[lat_lng_cols]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/lat_lng_cols.png
+[lat_lng_geoloc]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/lat_lng_geoloc.png
+[geom_column_updated]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/geom_column_updated.png
+[change_column_type]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/change_column_type.png
+[cartodb_suggests_map]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_suggests_map.png
+[cartodb_suggests_heatmap]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_suggests_heatmap.png
+[cartodb_builds_heatmap]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_builds_heatmap.png
+[point_map_selected]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/point_map_selected.png
+[add_new_layer]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/add_new_layer.png
