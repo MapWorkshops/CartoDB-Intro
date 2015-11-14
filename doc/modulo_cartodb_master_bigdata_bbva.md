@@ -231,7 +231,7 @@ Con la opción de exportado, podremos exportar nuestras tablas de datos en diver
 
 ![Formatos de exportado][export_formats]
 
-Otra opción muy interesante es la de cambio de privacidad. Con ella podremos controlar quién accede a nuestros mapas.
+Otra opción muy interesante es la de cambio de privacidad. Con ella podremos controlar quién accede a nuestros mapas. Tengamos en cuenta que algunas opciones de privacidad **solo están disponibles en cuentas de pago**.
 
 Por último, destacar que la opción de borrado de mapa **solo borra la visualización que hayamos construído, no borra nuestros datos**
 
@@ -240,6 +240,10 @@ Por último, destacar que la opción de borrado de mapa **solo borra la visualiz
 * **Publish**: Desde aquí podremos compartir nuestro mapa de 3 maneras: con un simple enlace, que podremos mandar a quién queramos, siempre teniendo en cuenta las opciones de privacidad que hayamos elegido, con un código HTML listo para embeber en cualquier página web, y como un descriptor en formato JSON, que es el que nos permitirá progamar aplicaciones que incluyan nuestra visualización de mapa, como veremos en capítulos siguientes.
 
 ![Opciones de publicación][publish_options]
+
+Para terminar este apartado, solo vamos a mencionar que, en la vista de mapas, el menú lateral derecho tiene más opciones que en la vista de tabla. Veremos estas opciones en el capítulo siguiente
+
+![Menú lateral derecho vista de mapa][side_menu_map_view]
 
 # Creación de Mapas
 
@@ -282,7 +286,6 @@ Si lo preferimos, podemos implementar este filtro de manera que solo nos quedemo
 ![Filtro de columna de texto personalizado][cartodb_column_filter_text2]
 
 La otra manera de filtrar los datos es escribiendo nosotros directamente la consulta SQL, pero eso lo veremos más adelante, como ya se ha mencionado.
-
 
 
 ## Trabajar con datos geoespaciales
