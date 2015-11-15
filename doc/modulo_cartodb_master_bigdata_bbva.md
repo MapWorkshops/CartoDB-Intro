@@ -348,12 +348,65 @@ Para importar nuestra capa de líneas con los ciclocarriles de Madrid, pinchamos
 
 ![Nueva capa][add_new_layer]
 
-Volveremos a ver la pantalla de importanción de datos, donde podremos arrastrar nuestro [fichero de líneas](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.geojson)
+Volveremos a ver la pantalla de importanción de datos, donde podremos arrastrar nuestro [fichero de líneas](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.geojson). Tras ello, vemos como nuestro mapa se ha modificado para mostrarnos ambos conjuntos de datos, y un menú lateral derecho por cada capa añadida.
+
+![Mapa con dos capas][two_layers_map]
+
+Al estar utilizándose el mismo color por defecto para ambos tipos de dato, el mapa puede resultar algo confuso. Pero terminemos de importar capas, y luego nos preocuparemos de estilar el mapa.
+
 
 ### Creando nuestro mapa: importando polígonos
 
-TODO
+Finalmente, importaremos la capa que contiene los distritos de la ciudad de Madrid, que es un mapa de polígonos. Repetimos el mismo proceso que realizamos para la capa de líneas, y añadimos nuestra [capa de polígonos](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/distritos_madrid_nogeo.csv).
 
+Cuando los datos están importados, nos fijamos en que no aparece nada nuevo en nuestro mapa. Así que, una vez más, volvemos a nuestros datos. Vemos dos detalles interesantes.
+
+* La columna *the_geom*, que es la que almacena la geometría, no es un polígono, sino un punto.
+* Hay una columna llamada *cartodb_georef_status*, que contiene valores booleanos.
+
+![Mapa autogeoreferenciado][autoref_map]
+
+Lo que ha sucedido aquí es que nuestro conjunto de datos no contenía una columna de tipo geométrica, de manera que CartoDB ha intentado generarla automáticamente, **intentado decidir la geometría a partir de las columnas presentes**.
+
+El intento que ha hecho CartoDB ha sido a partir del campo *nombre*, que contiene el nombre de cada uno de los distritos de Madrid. Ese nombre le ha servido para geolocalizar de manera correcta algunas ubicaciones, pero creando un tipo de dato *point*. Es el caso de barrios como Arganzuela, Retiro o Chamartín. En otros casos, solo con el nombre no era posible determinar si era un barrio de Madrid u otro tipo de región administrativa. En el caso de Tetuán o Salamanca, por ejemplo, se ha generado un punto en las ciudades con el mismo nombre. Por último, ha habido casos en los que el geolocalizador automático no ha encontrado nada. Es el caso de Fuencarral-El Pardo o Moncloa-Aravaca.
+
+Entendemos ahora, por tanto, el significado de la columna *cartodb_georef_status*. Simplemente nos informa de si ese registro concreto ha podido ser geolocalizado o no.
+
+La intención de este ejercicio era demostrar cómo CartoDB intenta ayudarnos en la tarea de georeferenciar nuestros datos, incluso si no le hemos dado ninguna pista para ello. Lo que se hace *detrás de las cortinas* es simplemente intentar aplicar todas las opciones de georreferenciación presentes en la herramienta, y que ya hemos visto en el capítulo de *Un paseo por la interfaz de CartoDB*.
+
+Para más información sobre las capacidades de georreferenciación de CartoDB, se puede consultar [este artículo de la documentación oficial](http://docs.cartodb.com/tutorials/how_to_georeference/)
+
+En cualquier caso, a pesar de la georreferenciación parcial que nos ha proporcionado CartoDB, lo que nosotros queremos son polígonos representando distritos, no puntos. ¿Cómo los obtenemos?
+
+Fijémonos en la columna *geom_text* de la tabla
+
+![Texto representando geometría][pol_text]
+
+Lo que tenemos ahí es una definición de una geometría poligonal en [formato WKT](https://en.wikipedia.org/wiki/Well-known_text). Un lenguaje de marcado utilizado para representar geometrías vectoriales en un sistema de referencia espacial.
+
+Mediante este lenguaje, se pueden especificar de manera sencilla geometrías de diferentes tipos. Estas geometrías están definidas de manera oficial en la [*OpenGIS Simple Features Specification for SQL* ](http://www.opengeospatial.org/standards/sfs), un estándar de la [OGC](http://www.opengeospatial.org/). También conocido, de manera abreviada, como *OGC SFS*.
+
+Este estándar está aceptado oficialmente por PostGIS, de manera que podremos utilizarlo. Lo que tenemos en nuestro caso es un campo de tipo texto que contiene una definición OGC de un multipolígono. Mediante el uso de la función [ST_GeomFromText](http://www.postgis.org/docs/ST_GeomFromText.html) de PostGIS, podremos convertir la definición en una geometría y almacenarla en la columna *the_geom*. Vamos a la pestaña *SQL* del menú lateral, y escribimos la siguiente sentencia SQL:
+
+```sql
+update distritos_madrid_nogeo set the_geom = st_setsrid(st_geomfromtext(geom_text), 4326)
+```
+
+Vemos que, efectivamente, nuestro mapa muestra ahora polígonos representando distritos de la ciudad de Madrid. Más tarde les daremos estilo para mejorar nuestra visualización
+
+![Madrid con polígonos][madrid_with_pols]
+
+Hemos tenido que utilizar también la función [st_setsrid](http://www.postgis.org/docs/ST_SetSRID.html), porque la definición de nuestros polígonos no incluía información sobre el [sistema de referencia](https://en.wikipedia.org/wiki/Spatial_reference_system) de nuestros datos. En PostGIS, existe una tabla especial llamada *spatial_ref_sys* donde se encuentran identificadores numéricos de los sistemas de referencia espacial más utilizados. Estos identificadores numéricos también están definidos oficialmente, y se pueden consultar en línea en la web [http://spatialreference.org/](http://spatialreference.org/).
+
+En nuestro caso particular, hemos dado por hecho que el sistema de referencia utilizado es el popular WGS84, basado en el [*World Geodetic System datum*](http://www.linz.govt.nz/data/geodetic-system/datums-projections-heights/geodetic-datums/world-geodetic-system-1984-wgs84), utilizado en el sistema de navegación GPS, y que utiliza coordenadas latitud, longitud para definir la posición de un objeto sobre el globo terráqueo. Dicho sistema de referencia está indexado mediante el identificador 4326 de la tabla *spatial_ref_sys*, y eso es lo que significa el segundo argumento que le hemos pasado a la función *st_setsrid*. Podemos consultar la definición oficial del SRID 4326 desde [este enlace](http://spatialreference.org/ref/epsg/wgs-84/).
+
+Un estudio profundo de los sistemas de referencia espaciales escapa del ámbito de este manual. Únicamente se ha querido dar este breve apunte porque es bastante habitual que nos encontremos situaciones como la que hemos enfrentado ahora:
+
+* Datos no georreferenciados.
+* Información de ubicación espacial (latitud, longitud) no disponible.
+* Definiciones de geometrías espaciales incompletas.
+
+Es en estos casos donde, para construir una visualización de datos espaciales, deberemos tener unos conocimientos mínimos sobre sistemas de información geográfica que nos permitan *limpiar* o corregir nuestros datos. 
 
 
 ## Filtrando datos: Pestaña de filtros
@@ -477,3 +530,7 @@ TODO
 [cartodb_builds_heatmap]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_builds_heatmap.png
 [point_map_selected]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/point_map_selected.png
 [add_new_layer]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/add_new_layer.png
+[two_layers_map]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/two_layers_map.png
+[autoref_map]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/autoref_map.png
+[pol_text]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/pol_text.png
+[madrid_with_pols]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/madrid_with_pols.png
