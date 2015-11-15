@@ -548,6 +548,43 @@ Vamos a dejar el código HTML como está, y limitarnos a cambiar los valores num
 
 Por supuesto, si quisiéramos crear una plantilla totalmente personalizada, solo tenemos que elegir la opción *custom* en el desplegable.
 
+Para terminar con nuestra capa de polígonos, vamos a añadir una última cosa. Queremos que, cuando pinchemos en uno cualquiera de los polígonos, aparezca una ventana de información que nos diga el nombre del distrito, su extensión y su densidad de población.
+
+Para conseguirlo, nos vamos a la pestaña de *infowindows*. Dentro vemos dos pestañas más: *Click* y *Hover*. La primera de ellas nos permitirá crear un infowindow al pinchar sobre uno de los polígonos. La otra, lo mismo pero al pasar por encima. Nos vamos a limitar a la primera opción.
+
+Vamos a ponerle un título a la infowindow. Además, vamos a mostrar los campos:
+
+* *nombre*
+* *pop_density*
+* *shape_area*
+
+Vemos las opciones elegidas en la siguiente imagen
+
+![Crear infowindows][infowindow_creation]
+
+¿Qué sucede ahora si pinchamos en uno de los distritos? Lo vemos en la imagen, habiendo pinchado en el distrito de Tetuán
+
+![Mostrar infowindow][infowindow_show]
+
+No está mal, pero aun podemos mejorar nuestro infowindow. Para empezar, no queremos que nos salga el nombre del campo de la tabla, sino una etiqueta algo más descriptiva. Para ello, vamos a pinchar en el icono que nos permite cambiar las etiquetas de los nombres de los campos en las infowindows. Lo vemos resaltado en la siguiente imagen.
+
+![Enlace cambio etiquetas infowindow][infowindow_titles_edit]
+
+Establecemos unos nombres un poco más informativos. Lo vemos en la imagen
+
+![Cambio etiquetas infowindow][infowindow_titles_changed]
+
+Vamos a ir un poco más lejos, y editar directamente algún detalle del HTML de la plantilla del infowindow. Para ello, pinchamos en el enlace que está a la derecha del anterior, y que tiene la misma forma que el que utilizamos para editar el HTML de la leyenda. Vamos a añadir las unidades de medida en los campos que las necesiten. Lo vemos en la imagen
+
+![Cambio HTML infowindow][infowindow_html_changed]
+
+Ahora queda bastante más ilustrativo.
+
+![Infowindow cambiada][infowindow_changed]
+
+Más adelante veremos como es posible incluso generar el infowindow en tiempo real, para poder pasarle datos dinámicos. Lo haremos usando CartoDB.js, la librería JS de CartoDB.
+
+Con esto hemos terminado de personalizar el estilo de nuestra capa de polígonos. Vamos a revisar ahora cómo aplicar filtros a nuestros datos.
 
 ## Filtrando datos: Pestaña de filtros
 
@@ -699,3 +736,9 @@ TODO
 [edit_html_legend]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/edit_html_legend.png
 [html_legend]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/html_legend.png
 [choroplet_template_modified]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/choroplet_template_modified.png
+[infowindow_creation]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/infowindow_creation.png
+[infowindow_show]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/infowindow_show.png
+[infowindow_titles_edit]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/infowindow_titles_edit.png
+[infowindow_titles_changed]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/infowindow_titles_changed.png
+[infowindow_html_changed]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/infowindow_html_changed.png
+[infowindow_changed]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/infowindow_changed.png
