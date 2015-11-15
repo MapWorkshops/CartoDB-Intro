@@ -449,7 +449,7 @@ En esta visualización, queremos ver cada una de las estaciones de Bicimad por s
 
 ![Wizard visualizacion simple de puntos][wizard_simple_viz]
 
-Lo primero que vamos a hacer es cambiar el color del icono a rojo. Para ello, pinchamos en el botón de cambio de color de la opción *Marker fill*, y elegimos el rojo, como se puede ver en la imagen
+Lo primero que vamos a hacer es cambiar el color del icono a rojo. Para ello, pinchamos en el botón de cambio de color de la opción *Marker fill*, y elegimos el azul, como se puede ver en la imagen
 
 ![Cambio color icono marker][change_color_icon]
 
@@ -461,7 +461,7 @@ Elegiremos el pin 45 de la pestaña *Pin icons*, como se resalta en la imagen
 
 ![Eligiendo icono de bici][bike_icon]
 
-Hecho esto, observamos que nuestros iconos circulares se han transformado en pequeños iconos de color rojo conteniendo bicicletas
+Hecho esto, observamos que nuestros iconos circulares se han transformado en pequeños iconos de color azul conteniendo bicicletas
 
 ![Iconos de tipo bici][map_with_bike_icons]
 
@@ -473,7 +473,80 @@ Una vez hemos terminado de estilar nuestros puntos, vamos a revisar la pestaña 
 
 Por supuesto, siempre podremos tocar a mano el CartoCSS, si nos sentimos más cómodos haciéndolo así que vía *wizard*.
 
+Hemos terminado con nuestra capa de puntos. Vamos a por la capa de líneas.
 
+## Estilando nuestros datos de tipo línea
+
+Para estilar nuestra capa de puntos, activamos otra vez la visibilidad de la capa. Posteriormente, cambiamos el color de la línea a verde, para contrastar con el azul de las estaciones.
+
+![Cambio color línea][line_to_green]
+
+Hecho esto, ya podemos ver algo interesante en el mapa. A pesar de que la zona norte de Madrid (de Chamberí hacia arriba) dispone de bastantes ciclocarriles, no hay aun estaciones de Bicimad en la zona.
+
+![Estaciones y ciclocarriles][stations_and_paths]
+
+No vamos a hacer más con nuestra capa de líneas. Pasemos a la capa de polígonos.
+
+## Estilando nuestros datos de tipo polígono
+
+Por último, activamos la visibilidad de nuestra capa de tipo polígono, y nos dirigimos al *wizard*. Lo primero que nos llama la atención es que la capa de polígonos tapan las otras dos capas de datos.
+
+![Polígonos tapando capas][polygon_layer_first]
+
+Vamos a arreglarlo moviendo la capa de polígonos abajo del todo. Para ello, solo tenemos que pinchar en el menú lateral derecho, a la altura del número que indica la capa, y arrastrar la capa hacia abajo. El resultado es mucho más claro
+
+![Polígonos por debajo][polygon_layer_background]
+
+Dada la naturaleza de nuestros datos poligonales, hay dos tipos de visualizaciones que tienen sentido:
+
+* Mapa de categorías, usando la columna de *nombre* como categoría.
+* Mapa de coropletas, usando la columna de *pob_density*, de densidad de población, como columna numérica.
+
+Con el primer mapa, simplemente vemos cada distrito por separado, y una leyenda en la parte inferior derecha.
+
+![Mapa de categorías][category_map]
+
+Si le echamos un vistazo al CartoCSS de la capa, podemos ver cómo se aplican los diferentes colores en función del campo *nombre* de la capa
+
+![CartoCSS mapa de categorías][cartocss_category_map]
+
+Con el segundo mapa, lo que vemos es un código de colores más oscuro cuanto más densidad de población tiene el distrito representado.
+
+![Mapa de coropletas][choroplet_map]
+
+En cuanto al CartoCSS, vemos que, en esta ocasión, los diferentes colores se están aplicando en función de comparar un valor numérico con un valor umbral. Este valor umbral está calculado automáticamente en función de dos parámetros:
+
+* El número de *Buckets* que decidamos que queremos utilizar para distribuir nuestros valores.
+
+![Desplegable coropletas buckets][choroplet_buckets_select]
+
+* El método que utilicemos para distribuir estos valores
+
+![Desplegable coropletas cuantificación][choroplet_quantification_select]
+
+Para entender más acerca de métodos de cuantificación, podemos consultar la [documentación de CartoDB](http://docs.cartodb.com/cartodb-editor/maps/#choropleth). Simplemente, añadir que, en cualquier momento, podemos cambiar el código CartoCSS de manera manual, para especificar nuestros propios valores umbrales.
+
+Fijémonos ahora en la parte inferior derecha del mapa. Ha aparecido automáticamente una leyenda que muestra una rampa de colores con unos valores máximo y mínimo.
+
+![Leyenda mapa coropletas][choroplet_legend]
+
+La leyenda, tal y como está, no nos aporta demasiada información. No sabemos qué significan esos números, ni esos colores. Vamos a modificar algunas cosas. Para ello, entramos en la pestaña *Legends* de la capa de polígonos.
+
+![Opciones leyenda mapa coropletas][choroplet_legend_options]
+
+Vemos que aparece seleccionada *choroplet* como plantilla para la leyenda. Si queremos ver el código HTML de la plantilla, solo tenemos que pulsar en el icono con forma de etiqueta HTML. En la imagen se ve resaltado
+
+![Botón cambio HTML leyenda][edit_html_legend]
+
+El código es HTML estándar, como se puede comprobar
+
+![HTML plantilla leyenda][html_legend]
+
+Vamos a dejar el código HTML como está, y limitarnos a cambiar los valores numéricos por algo más significativo. Además, añadiremos un título a la leyenda.
+
+![Plantilla leyenda coropletas modificada][choroplet_template_modified]
+
+Por supuesto, si quisiéramos crear una plantilla totalmente personalizada, solo tenemos que elegir la opción *custom* en el desplegable.
 
 
 ## Filtrando datos: Pestaña de filtros
@@ -612,3 +685,17 @@ TODO
 [change_color_icon]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/change_color_icon.png
 [map_with_bike_icons]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_with_bike_icons.png
 [cartocss_point_layer]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartocss_point_layer.png
+[line_to_green]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/line_to_green.png
+[stations_and_paths]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/stations_and_paths.png
+[polygon_layer_first]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/poligon_layer_first.png
+[polygon_layer_background]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/polygon_layer_background.png
+[category_map]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/category_map.png
+[cartocss_category_map]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartocss_category_map.png
+[choroplet_map]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/choroplet_map.png
+[choroplet_buckets_select]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/choroplet_buckets_select.png
+[choroplet_quantification_select]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/choroplet_quantification_select.png
+[choroplet_legend]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/choroplet_legend.png
+[choroplet_legend_options]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/choroplet_legend_options.png
+[edit_html_legend]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/edit_html_legend.png
+[html_legend]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/html_legend.png
+[choroplet_template_modified]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/choroplet_template_modified.png
