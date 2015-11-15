@@ -441,11 +441,7 @@ Vamos a empezar a estilar nuestros datos de tipo punto.
 
 ## Estilando nuestros datos de tipo punto
 
-Al pinchar en el menú número 1, se nos despliega dicho menú. Nos vamos al apartado de *wizards*.
-
-![Menú de puntos wizard][point_menu_wizard]
-
-Para aclararnos mejor, vamos a dejar en el mapa solo estos datos. Desactivamos la vista de las otras dos capas, mediante el icono de interruptor que hay en la parte superior derecha de cada menú.
+Al pinchar en el menú número 1, se nos despliega dicho menú. Para aclararnos mejor, vamos a dejar en el mapa solo estos datos. Desactivamos la vista de las otras dos capas, mediante el icono de interruptor que hay en la parte superior derecha de cada menú.
 
 ![Desactivando otras capas][disabling_other_layers]
 
