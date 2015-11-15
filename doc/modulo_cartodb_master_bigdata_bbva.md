@@ -249,7 +249,7 @@ Para terminar este apartado, solo vamos a mencionar que, en la vista de mapas, e
 
 Ya que conocemos la interfaz de CartoDB, vamos a empezar a trabajar en serio con la herramienta. Para ello, crearemos una visualización de las estaciones de [Bicimad](http://www.bicimad.com/) y los ciclocarriles de la ciudad de Madrid. Dicha visualización constará de 3 capas:
 
-* [Capa con **distritos de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/distritos_madrid_nogeo.csv), obtenida de la biblioteca de datos de CartoDB. Se trata de un conjunto de datos en formato polígono.
+* [Capa con **distritos de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/distritos_madrid_nogeo.csv), creada a partir de la biblioteca de datos de CartoDB. Se trata de un conjunto de datos en formato polígono.
 * [Capa con **ciclocarriles de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.geojson), obtenida de la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=435a7cd5de319410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos en formato línea.
 * [Capa con **estaciones de Bicimad**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/gbicimad_nogeo.csv), obtenida también de la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=f17b841a2c7d6410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos de puntos.
 
@@ -259,7 +259,7 @@ Adicionalmente, creamos un segundo mapa que contenga un solo conjunto de datos, 
 
 Comencemos con la importación de datos.
 
-# Trabajando con datos
+## Importando datos
 
 Cuando trabajamos con datos de fuentes externas, es muy común que nos enfrentemos a problemas como:
 
@@ -406,7 +406,78 @@ Un estudio profundo de los sistemas de referencia espaciales escapa del ámbito 
 * Información de ubicación espacial (latitud, longitud) no disponible.
 * Definiciones de geometrías espaciales incompletas.
 
-Es en estos casos donde, para construir una visualización de datos espaciales, deberemos tener unos conocimientos mínimos sobre sistemas de información geográfica que nos permitan *limpiar* o corregir nuestros datos. 
+Es en estos casos donde, para construir una visualización de datos espaciales, deberemos tener unos conocimientos mínimos sobre sistemas de información geográfica que nos permitan *limpiar* o corregir nuestros datos.
+
+Veremos a continuación cómo darles estilos a nuestros datos, y crear con ellos una visualización que tenga sentido
+
+## Estilando nuestros datos
+
+Ahora que ya tenemos nuestros datos importados en CartoDB, vamos a darles algo de estilo y a enriquecer nuestro mapa con algo de información extra.
+
+En la parte derecha de nuestra vista de mapa, deberíamos ver apilados tres menús, uno para cada conjunto de datos
+
+![Menús laterales vista de mapa][side_menus_map_view]
+
+Cuando entremos en uno cualquiera, se nos llevará automáticamente a la pestaña de *wizards*. Desde los *wizards*, podremos ajustar el tipo de visualización que queremos para nuestros datos, así como los colores, rellenos, anchos de líneas y otros pocos parámetros visuales.
+
+Ya en el *wizard*, podemos experimentar eligiendo los diferentes tipos de visualizaciones, y ver qué efecto producen. En términos generales, esto es lo que muestra cada visualización.
+
+* ***Simple***: Visualización básica. Cada elemento por separado, todos con la misma forma y tamaño.
+* ***Cluster***: Cada elemento representa un determinado número de puntos encerrados en una determinada región, llamada *cluster*.
+* ***Choropleth***: Se utiliza para pintar cada elemento de un color, en función de una variable numérica obtenida a partir de una o más columnas. Es especialmente útil en el caso de polígonos, para comparar unos con otros.
+* ***Category***: También se utiliza para pintar cada elemento de un color, pero esta vez en función de una variable cualitativa (una categoría). Es especialmente útil cuando tenemos nuestros elementos organizados por una cualidad que comparten de manera grupal.
+* ***Bubble***: El tamaño de cada elemento va en función del valor numérico de otra columna de nuestro registro. No se puede usar con polígonos, pero es útil a la hora de comparar cuantitivamente valores puntuales.
+* ***Torque***: Visualización dinámica para una progresión de puntos que se distribuyen a lo largo del tiempo. Acepta diferentes tipos de formato para la variable temporal, siendo el formato por defecto YYYY-DD-MMThh:mm:ss. Pero también acepta año, año y mes, año, mes y día, o solo horas.
+* ***Heatmap***: Es una variación de Torque, que crea mapas de calor para datos temporales. Las áreas con mayor intensidad de color son aquellas que contienen mayor concentración de puntos.
+* ***Torque Cat***: Es otra variación de Torque. Muestra también una animación de puntos, pero los colorea de manera diferente en función de una variable cualitativa (una categoría)
+* ***Intensity***: Es parecido a un *heatmap*. Muestra la densidad de puntos, oscureciendo las áreas con mayor concentración de los mismos, pero aquí se mantienen los puntos por separado. Los *heatmap* son más apropiadas para visualizaciones lejanas (en las que nos interesan áreas grandes) o animadas (queremos ver el crecimiento y concentración de elementos a lo largo del tiempo). Los mapas de intensidad, en cambio, son más apropiados cuando estamos interesados en estratificar la ocurrencia de datos por áreas. Pensados para una visualización más de cerca, se ven más enriquecidos si usamos infowindows. Los veremos más adelante.
+* ***Density***: Los datos son agregados en figuras de tipo hexagonal, que son coloreadas más oscuras cuantos más datos agregados contengan. Esta visualización no permite infowindows, así que, si queremos añadirlos, es mejor que usemos una visualización de tipo *Intensity*
+
+En cualquiera de los casos, cuando toquemos los parámetros de nuestra visualización, **lo que estaremos haciendo realmente es modificar el CartoCSS** que se aplica a la misma. CartoCSS es un lenguaje de estilado de mapas web, similar a CSS en el sentido de que nos permite parametrizar el aspecto y comportamiento de los elementos de nuestra visualización. Fue creado por Mapbox, y podemos consultar la referencia oficial online en [este enlace](https://github.com/mapbox/carto/blob/master/docs/latest.md). Pero dado que Mapbox abandonó oficialmente el mantenimiento de la documentación de CartoCSS, es posible que nos interese más consultar la referencia de CartoCSS creada por CartoDB en [este otro enlace](http://docs.cartodb.com/cartodb-platform/cartocss/).
+
+Si queremos profundizar más en qué tipo de visualización es apropiada en función de nuestros datos, podemos consultar este [tutorial de CartoDB academy](http://academy.cartodb.com/courses/06-intermediate-design/lesson-1.html)
+
+Vamos a empezar a estilar nuestros datos de tipo punto.
+
+## Estilando nuestros datos de tipo punto
+
+Al pinchar en el menú número 1, se nos despliega dicho menú. Nos vamos al apartado de *wizards*.
+
+![Menú de puntos wizard][point_menu_wizard]
+
+Para aclararnos mejor, vamos a dejar en el mapa solo estos datos. Desactivamos la vista de las otras dos capas, mediante el icono de interruptor que hay en la parte superior derecha de cada menú.
+
+![Desactivando otras capas][disabling_other_layers]
+
+En esta visualización, queremos ver cada una de las estaciones de Bicimad por separado, de manera que elegimos una visualización de tipo *Simple*. Con ese tipo de visualización, se nos ofrecen unas pocas opciones de parametrización.
+
+![Wizard visualizacion simple de puntos][wizard_simple_viz]
+
+Lo primero que vamos a hacer es cambiar el color del icono a rojo. Para ello, pinchamos en el botón de cambio de color de la opción *Marker fill*, y elegimos el rojo, como se puede ver en la imagen
+
+![Cambio color icono marker][change_color_icon]
+
+Ahora vamos a cambiar el icono del punto por algo más *bike-friendly*. Pinchamos en la etiqueta *IMG* que acompaña al botón de cambio de color de la opción *Marker fill*
+
+![Etiqueta IMG Marker Fill][img_label_marker]
+
+Elegiremos el pin 45 de la pestaña *Pin icons*, como se resalta en la imagen
+
+![Eligiendo icono de bici][bike_icon]
+
+Hecho esto, observamos que nuestros iconos circulares se han transformado en pequeños iconos de color rojo conteniendo bicicletas
+
+![Iconos de tipo bici][map_with_bike_icons]
+
+La opción de *Composite operation* sirve para especificar qué sucede con los colores de los elementos que se superponen en la visualización. Nuestros datos son iconos separados, pero aun así, cuando disminuyamos el nivel de zoom (nos alejemos), se empezarán a montar unos sobre otros. Vamos a dejar la opción de *None* marcada. Las operaciones de composición son un asunto complejo y escapan del alcance de este tutorial. No obstante, se puede consultar la documentación sobre las mismas en [este enlace](https://www.mapbox.com/tilemill/docs/guides/comp-op/).
+
+Una vez hemos terminado de estilar nuestros puntos, vamos a revisar la pestaña *CSS* del menú lateral, para verificar algo que ya comentamos en el apartado anterior: **las parametrizaciones que hagamos vía wizard únicamente cambian el CartoCSS de nuestra visualización**. Así es como ha quedado nuestro CartoCSS
+
+![CartoCSS capa de puntos][cartocss_point_layer]
+
+Por supuesto, siempre podremos tocar a mano el CartoCSS, si nos sentimos más cómodos haciéndolo así que vía *wizard*.
+
+
 
 
 ## Filtrando datos: Pestaña de filtros
@@ -455,6 +526,8 @@ TODO (geometrías, proyecciones...)
 TODO
 
 (Aquí, ademas de queries geoespaciales, mostrar que, por ejemplo, podemos obtener solo los campos que necesitamos a través de la consulta SQL, obviando el resto. Por ejemplo, no queremos para nada los campos lat y lng de la capa de puntos, o la mayoría de campos de la capa de líneas)
+
+(También mostrar cómo quedarnos con los datos de los barrios que nos interesan, que son los que contienen puntos o líneas)
 
 ## Mezclando fuentes
 
@@ -534,3 +607,12 @@ TODO
 [autoref_map]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/autoref_map.png
 [pol_text]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/pol_text.png
 [madrid_with_pols]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/madrid_with_pols.png
+[side_menus_map_view]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/side_menus_map_view.png
+[point_menu_wizard]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/point_menu_wizard.png
+[disabling_other_layers]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/disabling_other_layers.png
+[wizard_simple_viz]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/wizard_simple_viz.png
+[img_label_marker]:  https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/img_label_marker.png
+[bike_icon]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/bike_icon.png
+[change_color_icon]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/change_color_icon.png
+[map_with_bike_icons]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_with_bike_icons.png
+[cartocss_point_layer]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartocss_point_layer.png
