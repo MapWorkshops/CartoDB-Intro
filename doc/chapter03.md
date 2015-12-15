@@ -79,4 +79,4 @@ TODO
 
 ## Mezclando fuentes
 
-TODO
+(Aquí podemos mostrar una tabla de polígonos que tengan solo el nombre de la ciudad y la población, y otra de polígonos que tengan la geometría y el nombre, y cruzarlo para obtener la tabla de polígonos completa)
