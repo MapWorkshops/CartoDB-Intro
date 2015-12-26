@@ -98,3 +98,4 @@
 [merge_fields]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/merge_fields.png
 [merged_tables]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/merged_tables.png
 [map_with_filtered_districts]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_with_filtered_districts.png
+[cartodb_js_example]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_js_example.png
