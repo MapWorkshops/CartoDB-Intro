@@ -2,7 +2,7 @@
 function loadFeatureStats(info, cartodb_id) {
     var sql = new cartodb.SQL({user: 'jorgeas80'});
 
-    sql.execute("with table1 as (SELECT a.cartodb_id, count(c.cartodb_id) as n FROM distritos_madrid a left join gbicimad c on st_contains(a.the_geom, c.the_geom) group by(a.cartodb_id)), table2 as (select a.cartodb_id, sum(st_length(b.the_geom_webmercator)) as l from distritos_madrid a left join ciclocarriles_madrid b on st_contains(a.the_geom, b.the_geom) group by(a.cartodb_id)) select t1.cartodb_id, t1.n, t2.l from table1 t1, table2 t2 where t1.cartodb_id = t2.cartodb_id and t1.cartodb_id =" + cartodb_id).done(function(data) {
+    sql.execute("with table1 as (SELECT a.cartodb_id, count(c.cartodb_id) as n FROM distritos_madrid_distritos_madrid_con_carril_y_bm a left join gbicimad c on st_contains(a.the_geom, c.the_geom) group by(a.cartodb_id)), table2 as (select a.cartodb_id, sum(st_length(b.the_geom_webmercator)) as l from distritos_madrid_distritos_madrid_con_carril_y_bm a left join ciclocarriles_madrid b on st_contains(a.the_geom, b.the_geom) group by(a.cartodb_id)) select t1.cartodb_id, t1.n, t2.l from table1 t1, table2 t2 where t1.cartodb_id = t2.cartodb_id and t1.cartodb_id =" + cartodb_id).done(function(data) {
 
         if (data.rows) {
             info.update(data.rows);
