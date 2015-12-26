@@ -15,7 +15,7 @@ En el directorio *examples/cartodb_js* se puede encontrar una aplicación de eje
 
 A continuación, una captura de ejemplo del aspecto de la aplicación
 
-![Aplicación con CartoDB.js[cartodb_js_example]
+![Aplicación con CartoDB.js][cartodb_js_example]
 
 La parte más compleja de la aplicación es la consulta SQL para obtener las estadísticas. Cabe destacar que se podrían haber obtenido también mediante la opción de *merge datasets* que vimos en un apartado anterior. Concretamente, haciendo uso de la opción *Spatial join*. Podríamos haber generado un par de nuevas tablas, conteniendo:
 
