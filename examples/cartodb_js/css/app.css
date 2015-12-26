@@ -26,7 +26,7 @@ body { margin: 0; padding: 0; }
     div.cartodb-fullscreen { margin:145px 0px 0 40px; }
 
 
-.leaflet-top.leaflet-right { top: 65px; right: 20px; }
+.leaflet-top.leaflet-right { top: 40px; right: 20px; }
 .leaflet-top.leaflet-control { margin-top: 0; }
 .leaflet-right.leaflet-control { margin-right: 0; }
 
@@ -62,20 +62,39 @@ body { margin: 0; padding: 0; }
 
 /* Graph */
 .graph { margin: 40px 0 16px; }
+    .graph-lst {
+      list-style-type: none;
+      border-bottom: 1px solid rgba(255, 255, 255, .2);
+      padding: 0 20px 0 0;
+      font-family: 'PT Sans';
+    }
+    .graph-lst li {
+      display: inline-block;
+      vertical-align: bottom;
+      width: 20px;
+      margin-left: 12px;
+      background: #B7C8B5;
+      position: relative;
+    }
+    .graph-lst li:first-child {
+      margin-left: 0;
+    }
     .graph-figure {
       font-size: 12px;
       font-weight: 200;
       position: absolute;
-      top: 40px;
+      top: -22px;
       color: #B7C8B5;
       font-weight: bold;
+      width: 20px;
       text-align: center;
     }
     .graph-provider {
       font-size: 12px;
       position: absolute;
-      bottom: 15px;
+      bottom: -22px;
       color: #fff;
       font-weight: regular;
+      width: 20px;
       text-align: center;
     }
