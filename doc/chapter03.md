@@ -78,7 +78,7 @@ Veamos un ejemplo, utilizando nuestro juego de datos de polígonos de la provinc
 Da lo mismo si estamos en la vista de mapa o de tabla. La consola está disponible en ambas. En la consola, escribimos la siguiente consulta SQL:
 
 ```
-SELECT a.the_geom, a.coddistrit, a.geom_text FROM distritos_madrid a, gbicimad b where st_contains(a.the_geom, b.the_geom)
+SELECT a.the_geom, a.coddistrit, a.geom_text FROM distritos_madrid a, gbicimad b where st_contains(a.the_geom, b.the_geom) group by(a.cartodb_id)
 ```
 
 Vemos que han desaparecido de la visualización los polígonos correspondientes a distritos que no contienen estaciones de BiciMad. También se nos ofrece la posibilidad de crear una nueva tabla con la consulta ejecutada, vamos a hacerlo (llamaremos a la tabla *distritos_madrid_con_bm*).
@@ -88,10 +88,10 @@ Vemos que han desaparecido de la visualización los polígonos correspondientes 
 Ahora vamos a repetir la operación anterior, pero nos quedaremos **solo con los distritos que contengan ciclocarriles**, y elegiremos, además, otras columnas. Para ello, desde nuestra tabla de distritos, ejecutamos la misma consulta SQL, pero utilizando la tabla *ciclocarriles_madrid* en lugar de la tabla de estaciones de BiciMad. Llamaremos a la tabla resultado *distritos_madrid_con_carril*.
 
 ```
-SELECT a.the_geom, a.geom_text, a.nombre, a.pop_density, a.population, a.shape_area, a.shape_len FROM distritos_madrid a, ciclocarriles_madrid b where st_contains(a.the_geom, b.the_geom)
+SELECT a.the_geom, a.geom_text, a.nombre, a.pop_density, a.population, a.shape_area, a.shape_len FROM distritos_madrid a, ciclocarriles_madrid b where st_contains(a.the_geom, b.the_geom) group by(a.cartodb_id)
 ```
 
-Como era de esperar, el resultado es una tabla con solo los distritos que contienen ciclocarriles. Además, los campos de esta tabla son diferentes a los de nuestra tabla original de polígonos, y a los de la tabla que hemos creado en el paso anterior.
+Como era de esperar, el resultado es una tabla con solo los distritos que contienen ciclocarriles. Además, los campos de esta tabla son diferentes a los de nuestra tabla original de polígonos, y a los de la tabla que hemos creado en el paso anterior. Llamaremos a esta tabla *distritos_madrid_distritos_madrid_con_carril*
 
 ![Polígonos que contienen líneas][pols_filtered2]
 
@@ -99,7 +99,7 @@ Ahora tenemos, por un lado, la tabla de distritos de Madrid que disponen de esta
 
 ## Mezclando fuentes
 
-Como ya hemos mencionado, vamos a mezclar dos tablas, para obtener una sola. Lo haremos desde la vista de tabla de la primera de ellas, haciendo click en el icono de *Merge datasets*. Dicho icono se encuentra en la vista de tabla, en la parte inferior del menú lateral derecho.
+Como ya hemos mencionado, vamos a mezclar dos tablas, para obtener una sola. Lo haremos desde la vista de tabla de la tabla *distritos_madrid_distritos_madrid_con_carril*, haciendo click en el icono de *Merge datasets*. Dicho icono se encuentra en la vista de tabla, en la parte inferior del menú lateral derecho.
 
 ![Icono mezclar datasets][merge_datasets_icon]
 
