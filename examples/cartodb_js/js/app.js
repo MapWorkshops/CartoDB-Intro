@@ -21,19 +21,17 @@ function buildInfoWindowContent(data) {
         return 'Cargando datos...';
     }
 
-    var htmlDiv = "<div class='graph' style='right: 400px; top: 400px;'><div class='graph-inner'><ul class='graph-lst'>";
+    var htmlDiv = "<div class='graph' style='right: 400px; top: 400px;'><div class='graph-inner'>";
 
     for(var i=0; i < data.length; i++) {
-        var h = parseInt(data[i].n) / 3;
 
-        htmlDiv += "<li style='height: " + h + "px'>";
-        htmlDiv += "<span class='graph-figure'>" + data[i].n + "</span>";
-        htmlDiv += "<span class='graph-provider'>" + data[i].l + "</span>";
-        htmlDiv += "</li>";
+        km = parseFloat(data[i].l) / 1000;
 
+        htmlDiv += "<span class='graph-provider'>" + km.toFixed(2) + " km</span>";
+        htmlDiv += "<span class='graph-figure'>" + parseInt(data[i].n) + " estaciones</span>";
     }
 
-    htmlDiv += "</ul><span class='bus'>Estaciones BiciMad</span> <span class='amount'>Km totales ciclocarril</span></div></div>";
+    htmlDiv += "<span class='stations'>Estaciones BiciMad</span><span class='length'>Km totales ciclocarril</span></div></div>";
 
     return htmlDiv;
 }
