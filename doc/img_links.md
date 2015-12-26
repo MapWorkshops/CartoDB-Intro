@@ -90,3 +90,12 @@
 [infowindow_titles_changed]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/infowindow_titles_changed.png
 [infowindow_html_changed]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/infowindow_html_changed.png
 [infowindow_changed]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/infowindow_changed.png
+[pols_containing_points]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/pols_containing_points.png
+[pols_filtered]https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/pols_filtered.png
+[pols_filtered2]https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/pols_filtered2.png
+[merge_datasets_icon]https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/merge_datasets_icon.png
+[merge_type]https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/merge_type.png
+[merge_by_string_field]https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/merge_by_string_field.png
+[merge_fields]https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/merge_fields.png
+[merged_tables]https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/merged_tables.png
+[map_with_filtered_districts]https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_with_filtered_districts.png

@@ -45,7 +45,7 @@ Ya hemos visto en un apartado anterior el concepto de *SRID*: el sistema de refe
 
 A la hora de trabajar con datos geográficos, hemos de entender que estos carecen de sentido sin saber qué parte del mundo representan y cómo la representan. En otras palabras, tenemos que conocer el sistema de referencia espacial (SRS, por sus siglas en inglés) de nuestros datos para saber dónde está realmente cada punto representado. Es un concepto de vital importancia, porque normalmente, el usuario de un software GIS quiere poder obtener datos de diversas fuentes y superponerlos de manera que estos coincidan. Esto solo puede suceder **si todos los datos de todas las fuentes utilizan el mismo sistema de referencia espacial**.
 
-En la actualidad, la manera más sencilla de especificar y obtener el SRS de unos datos es a través de los índices EPSG. Estos índices permiten expresar la complejidad subyacente en un SRS con un simple número que indexa una tabla. Si bien es cierto que no todas las fuentes de datos han de tener forzosamente un sistema de referencia espacial indexado por EPSG (sobre todo si son antiguos). Por eso hemos de entender cuáles son los componente fundamentales de un SRS:
+En la actualidad, la manera más sencilla de especificar y obtener el SRS de unos datos es a través de los índices EPSG. Estos índices permiten expresar la complejidad subyacente en un SRS con un simple número que indexa una tabla. Si bien es cierto que no todas las fuentes de datos han de tener forzosamente un sistema de referencia espacial indexado por EPSG (sobre todo si son antiguos). Por eso hemos de entender cuáles son los componentes fundamentales de un SRS:
 
 * **Un elipsoide de referencia**: Un elemento matemático construído alrededor del geoide que es realmente la Tierra. Es lo que el SRS tomará como representación del planeta, de manera que ha de cumplir una serie de restricciones para poder ser considerado suficientemente bueno como representación. Esto significa desviarse lo menos posible de la forma real del geoide. En la práctica, lo que sucede es que el elipsoide suele ser una representación bastante buena del geoide que recubre solo en una zona, perdiendo precisión en el resto del mundo. Es por eso que se suelen definir diferentes tipos de elipsoides, por países o continentes. Aunque actualmente, el elipsoide de referencia más utilizado es el WGS84. Es el que usa el sistema GPS.
 * **Un datum**: Una manera de enganchar el elipsoide a una zona concreta de la Tierra. Estrictamente, es un conjunto de valores que definen dónde va realmente cada punto del elipsoide. En España, se suelen usar el datum ED50 y, más actualmente, el ETRS89.
@@ -61,7 +61,9 @@ Para transformar una esfera en un plano, y poder trabajar con geometría Eucli�
 
 Para ver cómo funciona una proyección, podemos ver [este ejemplo](https://dl.dropboxusercontent.com/u/6599273/demos/distortion/index.html)
 
-En el caso de los mapas web, la proyección que se utiliza es la que tiene el código [EPSG:3857](http://wiki.openstreetmap.org/wiki/EPSG:3857). Es un tipo de proyección Mercator esférica popularizado por Google Maps y posteriormente por [OpenStretMap](http://wiki.openstreetmap.org/wiki/OpenStreetMap). En concreto, CartoDB mantiene por separado las columnas *the_geom* y *the_geom_webmercator*, que almacenan la misma geometría, en los sistemas de referencia EPSG 4326 y 3857, respectivamente. Lo mismo sucede con las columnas *raster* y *raster_webmercator*, en datos de tipo *raster*.
+En el caso de los mapas web, la proyección que se utiliza es la que tiene el código [EPSG:3857](http://wiki.openstreetmap.org/wiki/EPSG:3857). Es un tipo de proyección Mercator esférica popularizada por Google Maps y posteriormente por [OpenStretMap](http://wiki.openstreetmap.org/wiki/OpenStreetMap).
+
+CartoDB no es una excepción a esta regla, dado que usa la proyección EPSG:3857 para mostrar los datos en pantalla. No obstante, por razones de rendimiento , **también mantiene los datos almacenados con EPSG:4326 (latitud, longitud)**. Por tanto, se tienen por separado las columnas *the_geom* y *the_geom_webmercator*, que almacenan la misma geometría, en los sistemas de referencia EPSG 4326 y 3857, respectivamente. Lo mismo sucede con las columnas *raster* y *raster_webmercator*, en datos de tipo *raster*.
 
 La mayor diferencia entre ambos tipos de columna es que *the_geom* (y *raster*) utilizan coordenadas no proyectadas, y por lo tanto, distancias medidas en grados. Las columnas *the_geom_webmercator* y *raster_webmercator* utilizan coordenadas proyectadas y distancias medidas en metros.
 
@@ -71,12 +73,75 @@ Ya hemos visto en un apartado anterior como, utilizando CartoDB, es posible apli
 
 Por supuesto, nosotros podemos implementar nuestros propios filtros mediante cláusulas SQL directamente, utilizando para ello la consola SQL del editor de CartoDB, que ya hemos visto en apartados anteriores.
 
-TODO
+Veamos un ejemplo, utilizando nuestro juego de datos de polígonos de la provincia de Madrid. Vamos a quedarnos solo con aquellos polígonos (distritos) que contengan estaciones de BiciMad. Para ello, vamos a la tabla de distritos de Madrid y abrimos la consola SQL de la capa número 1 (la de polígonos).
 
-(Aquí, ademas de queries geoespaciales, mostrar que, por ejemplo, podemos obtener solo los campos que necesitamos a través de la consulta SQL, obviando el resto. Por ejemplo, no queremos para nada los campos lat y lng de la capa de puntos, o la mayoría de campos de la capa de líneas)
+Da lo mismo si estamos en la vista de mapa o de tabla. La consola está disponible en ambas. En la consola, escribimos la siguiente consulta SQL:
 
-(También mostrar cómo quedarnos con los datos de los barrios que nos interesan, que son los que contienen puntos o líneas)
+```
+SELECT a.the_geom, a.coddistrit, a.geom_text FROM distritos_madrid a, gbicimad b where st_contains(a.the_geom, b.the_geom)
+```
+
+Vemos que han desaparecido de la visualización los polígonos correspondientes a distritos que no contienen estaciones de BiciMad. También se nos ofrece la posibilidad de crear una nueva tabla con la consulta ejecutada, vamos a hacerlo (llamaremos a la tabla *distritos_madrid_con_bm*).
+
+![Polígonos que contienen puntos][pols_filtered]
+
+Ahora vamos a repetir la operación anterior, pero nos quedaremos **solo con los distritos que contengan ciclocarriles**, y elegiremos, además, otras columnas. Para ello, desde nuestra tabla de distritos, ejecutamos la misma consulta SQL, pero utilizando la tabla *ciclocarriles_madrid* en lugar de la tabla de estaciones de BiciMad. Llamaremos a la tabla resultado *distritos_madrid_con_carril*.
+
+```
+SELECT a.the_geom, a.geom_text, a.nombre, a.pop_density, a.population, a.shape_area, a.shape_len FROM distritos_madrid a, ciclocarriles_madrid b where st_contains(a.the_geom, b.the_geom)
+```
+
+Como era de esperar, el resultado es una tabla con solo los distritos que contienen ciclocarriles. Además, los campos de esta tabla son diferentes a los de nuestra tabla original de polígonos, y a los de la tabla que hemos creado en el paso anterior.
+
+![Polígonos que contienen líneas][pols_filtered2]
+
+Ahora tenemos, por un lado, la tabla de distritos de Madrid que disponen de estaciones de BiciMad y, por otra, la tabla de distritos que disponen de ciclocarriles. Como podemos comprobar, son bastantes parecidas. Podríamos juntarlas en una sola tabla, y trabajar con ella. Para eso, usaremos la herramienta de mezcla de tablas de CartoDB. Lo veremos en el siguiente apartado.
 
 ## Mezclando fuentes
 
-TODO
+Como ya hemos mencionado, vamos a mezclar dos tablas, para obtener una sola. Lo haremos desde la vista de tabla de la primera de ellas, haciendo click en el icono de *Merge datasets*. Dicho icono se encuentra en la vista de tabla, en la parte inferior del menú lateral derecho.
+
+![Icono mezclar datasets][merge_datasets_icon]
+
+Tras pinchar en el icono, se nos preguntará que tipo de combinación de tablas queremos:
+
+* *Column join*: Unión basada en un campo común que comparten ambas tablas
+* *Spatial join*: En este tipo de unión, realmente lo que obtendremos será una medida del número de elementos geométricos que intersectan entre ambas tablas. Podremos aplicar una operación agregada a dicho número (*count*, *sum* o *avg*)
+
+![Tipo de combinación][merge_type]
+
+El tipo de combinación que nos interesa es el primero. Realmente, queremos quedarnos con los registros de ambas tablas que coincidan en el valor de su campo geométrico. Por tanto, elegimos *Column join*.
+
+A continuación, se nos pregunta qué campo usar para realizar la comparación entre ambas tablas. Como podemos observar **no podemos elegir el campo geométrico para realizar la comparación**. Esto es así por razones de rendimiento al ejecutar la función de comparación.
+
+Pero no debemos preocuparnos. Podemos usar el campo *geom_text*, que contiene una representación textual de la columna geométrica en cada caso. Por tanto, seleccionamos ese campo en ambas tablas
+
+![Combinación por campo texto][merge_by_string_field]
+
+Por último, debemos decidir con qué campos de ambas tablas nos quedaremos.
+
+El primer detalle es que **no podemos elegir a la vez los dos campos geométricos**. Una tabla de CartoDB solo puede contener un campo de tipo geométrico, de manera que debemos elegir de qué tabla vamos a sacar el campo. Dada la naturaleza de nuestros datos, nos quedaremos con el campo de la tabla de rutas, porque dicha tabla contiene más registros que la tabla de puntos.
+
+Por último, seleccionaremos el resto de los campos de las dos tablas, a excepción del campo *geom_text* de la tabla de puntos, para evitar tenerlo repetido.
+
+ La selección debería quedar como se ve en la captura.
+
+![Campos a elegir][merge_fields]
+
+El resultado es una tabla que contiene la unión de campos de ambas tablas, como se puede ver en la captura. La hemos renombrado a *distritos_madrid_distritos_madrid_con_carril_y_bm*.
+
+![Tablas mezcladas][merged_tables]
+
+Esta misma mezcla que hemos realizado, podría haberse hecho mediante sentencias SQL, pero CartoDB nos facilita la operación propocionándonos una interfaz gráfica para realizarla.
+
+Ahora que ya tenemos una versión *filtrada* de nuestra tabla de distritos, vamos a modificar el mapa creado con las tres capas, sustituyendo la tabla original de polígonos por la que acabamos de crear. Para hacerlo de manera sencilla, simplemente cambiamos la sentencia SQL de donde obtenemos los polígonos, para que lea de la tabla nueva
+
+```
+select * from distritos_madrid_distritos_madrid_con_carril_y_bm
+```
+
+El resto, lo dejamos como está. El resultado es el siguiente
+
+![Mapa con distritos filtrados][map_with_filtered_districts]
+
+Es decir: **solo se muestran los distritos que contienen estaciones de BiciMad y/o ciclocarriles**.
