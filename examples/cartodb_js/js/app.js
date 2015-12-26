@@ -1,3 +1,11 @@
+// Generate HTML for infowindow
+function insert_data(content) {
+    var html_consent = "<h4>Nombre</h4><p>" + content.data.nombre + "</p>";
+
+    return html_consent;
+}
+
+
 // Main function: create map and load cdb layers
 function main() {
     // Load visualization
