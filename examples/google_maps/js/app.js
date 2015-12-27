@@ -1,4 +1,4 @@
-// Generate HTML for infowindow
+// Update SQL data
 function loadFeatureStats(info, cartodb_id) {
     var sql = new cartodb.SQL({user: 'jorgeas80'});
 
@@ -27,7 +27,6 @@ function buildInfoWindowContent(data) {
         km = parseFloat(data[0].l) || 0;
         km = (km/1000).toFixed(2);
         stations = parseInt(data[0].n) || 0;
-
     }
 
     else {
@@ -42,6 +41,12 @@ function buildInfoWindowContent(data) {
     htmlDiv += "<span class='stations'>Estaciones BiciMad</span><span class='length'>Km totales ciclocarril</span></div></div>";
 
     return htmlDiv;
+}
+
+
+function getJSONAddress() {
+
+
 }
 
 // Main function: create map and load cdb layers
@@ -74,16 +79,67 @@ function main() {
 
                 info.addTo(map);
 
-
                 // layer[1] is a layergroup containing the 3 sublayers (layer[0] is basemap)
                 pol_layer = layers[1].getSubLayer(0);
-                pol_layer.setInteraction(true);
 
                 // Update the info window with polygon stats
                 pol_layer.on('featureClick', function(e, pos, latlng, data) {
                     loadFeatureStats(info, data.cartodb_id)
                 });
 
+                // Now update the infowindow when we click on a point
+                points_layer = layers[1].getSubLayer(2);
+
+                var infowindow = points_layer.infowindow;
+
+                infowindow.set('template', function(data) {
+                    var clickPosLatLng = this.model.get('latlng');
+
+                    // Set 'address' paragraph to the address of the point, using reverse geocoding
+                    var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+clickPosLatLng[0]+","+clickPosLatLng[1]+"&key=GOOGLE_SERVER_KEY_HERE";
+
+                    $.getJSON(url, function(data) {
+                        var lat = 0;
+                        var lng = 0;
+                        if (data && 'results' in data) {
+                            // Get first result, if available
+                            results = data["results"];
+
+                            if(Object.prototype.toString.call(results) === '[object Array]' && results.length > 0) {
+                                res = results[0];
+
+                                // Add address to infowindow, if available
+                                if ('formatted_address' in res) {
+                                    address = res["formatted_address"];
+                                }
+
+                                else {
+                                    address = "Desconocida";
+                                }
+
+                                // Set img to image of Google Street View on that position
+                                lat = res['geometry']['location']['lat'];
+                                lng = res['geometry']['location']['lng'];
+                                var img_src = 'https://maps.googleapis.com/maps/api/streetview?size=200x150&location=' + lat + ',' + lng +'&heading=151.78&pitch=-0.76&key=GOOGLE_BROWSER_KEY_HERE';
+
+                                $('#google_image').attr('src', img_src);
+                            }
+
+                            else {
+                                address = "Desconocida";
+                            }
+                        }
+
+                        else {
+                            address = "Desconocida";
+                        }
+
+                        $('#address').html(address);
+
+                    });
+
+                    return $('#infowindow_template').html();
+                });
             }).on('error', function() {
                 cartodb.log.log("some error occurred");
             });

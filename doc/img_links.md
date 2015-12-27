@@ -99,3 +99,5 @@
 [merged_tables]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/merged_tables.png
 [map_with_filtered_districts]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_with_filtered_districts.png
 [cartodb_js_example]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_js_example.png
+[google_maps_browser_key_referer]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/google_maps_browser_key_referer.png
+[bicimap_station_image_and_address]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/bicimap_station_image_and_address.png
