@@ -44,11 +44,6 @@ function buildInfoWindowContent(data) {
 }
 
 
-function getJSONAddress() {
-
-
-}
-
 // Main function: create map and load cdb layers
 function main() {
     // Load visualization
