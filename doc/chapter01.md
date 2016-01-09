@@ -150,7 +150,7 @@ En la vista de tabla también observamos que hay un menú lateral en la parte de
 
 ![Menú lateral vista de tabla][side_menu_table_view]
 
-Volviendo a la vista de mapa, prestemos atención a los elementos de la interfaz que nos van a permitir actualmente sobre la visualización. El primero de ellos es la barra de herramientas de la parte superior izquierda
+Volviendo a la vista de mapa, prestemos atención a los elementos de la interfaz con los que podremos trabajar directamente sobre la visualización. El primero de ellos es la barra de herramientas de la parte superior izquierda
 
 ![Barra de herramientas de mapa][map_tool_bar]
 
