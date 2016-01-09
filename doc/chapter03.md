@@ -73,7 +73,7 @@ Ya hemos visto en un apartado anterior como, utilizando CartoDB, es posible apli
 
 Por supuesto, nosotros podemos implementar nuestros propios filtros mediante cláusulas SQL directamente, utilizando para ello la consola SQL del editor de CartoDB, que ya hemos visto en apartados anteriores.
 
-Veamos un ejemplo, utilizando nuestro juego de datos de polígonos de la provincia de Madrid. Vamos a quedarnos solo con aquellos polígonos (distritos) que contengan estaciones de BiciMad. Para ello, vamos a la tabla de distritos de Madrid y abrimos la consola SQL de la capa número 1 (la de polígonos).
+Veamos un ejemplo, utilizando nuestro juego de datos de polígonos de la provincia de Madrid. Vamos a quedarnos solo con aquellos polígonos (distritos) que contengan estaciones de BiciMad. Para ello, vamos a la tabla de distritos de Madrid y abrimos la consola SQL.
 
 Da lo mismo si estamos en la vista de mapa o de tabla. La consola está disponible en ambas. En la consola, escribimos la siguiente consulta SQL:
 

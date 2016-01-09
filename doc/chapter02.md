@@ -184,7 +184,7 @@ Una vez hemos terminado de estilar nuestros puntos, vamos a revisar la pestaña 
 
 ![CartoCSS capa de puntos][cartocss_point_layer]
 
-Por supuesto, siempre podremos tocar a mano el CartoCSS, si nos sentimos más cómodos haciéndolo así que vía *wizard*.
+Por supuesto, siempre podremos modificar a mano el CartoCSS, si nos sentimos más cómodos haciéndolo así que vía *wizard*.
 
 Hemos terminado con nuestra capa de puntos. Vamos a por la capa de líneas.
 

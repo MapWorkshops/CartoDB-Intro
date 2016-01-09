@@ -72,7 +72,7 @@
 [cartocss_point_layer]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartocss_point_layer.png
 [line_to_green]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/line_to_green.png
 [stations_and_paths]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/stations_and_paths.png
-[polygon_layer_first]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/poligon_layer_first.png
+[polygon_layer_first]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/polygon_layer_first.png
 [polygon_layer_background]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/polygon_layer_background.png
 [category_map]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/category_map.png
 [cartocss_category_map]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartocss_category_map.png
