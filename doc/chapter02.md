@@ -27,8 +27,8 @@ Es labor del profesional GIS el preveer, entender y solucionar esos contratiempo
 Para empezar, vamos a crear nuestro mapa, usando como fuentes de datos las 3 capas que hemos mencionado:
 
 * [Distritos de la ciudad de Madrid](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/distritos_madrid_nogeo.csv)
-* [Ciclocarriles de la ciudad de Madrid](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.geojson)
-* [Estaciones de Bicimad](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/gbicimad_nogeo.csv)
+* [Ciclocarriles de la ciudad de Madrid](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.kml)
+* [Estaciones de Bicimad](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/GBICIMAD.kml)
 
 ### Creando nuestro mapa: importando puntos
 
