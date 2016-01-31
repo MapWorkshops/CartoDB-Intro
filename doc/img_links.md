@@ -52,10 +52,26 @@
 [map_piled_layers_menu_reorg]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_piled_layers_menu_reorg.png
 [cartodb_column_filters]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filters.png
 [cartodb_filter_column]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_filter_column.png
+[cartodb_filter_column2]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_filter_column2.png
 [cartodb_column_filter_range]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filter_range.png
+[cartodb_column_filter_range2]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filter_range2.png
+[cartodb_column_filter_longest_line]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filter_longest_line.png
+[cartodb_column_filter_longest_line_north]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filter_longest_line_north.png
 [create_dataset_from_query]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/create_dataset_from_query.png
 [cartodb_column_filter_text]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filter_text.png
 [cartodb_column_filter_text2]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filter_text2.png
+[spatial_join_select_second_table]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/spatial_join_select_second_table.png
+[spatial_join_merge_operation]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/spatial_join_merge_operation.png
+[districts_without_lines]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/districts_without_lines.png
+[spatial_join_select_second_table2]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/spatial_join_select_second_table2.png
+[merge_count_stations_per_district]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/merge_count_stations_per_district.png
+[districts_without_stations]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/districts_without_stations.png
+[merge_datasets_column_join]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/merge_datasets_column_join.png
+[merge_dataset_pick_common_field]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/merge_dataset_pick_common_field.png
+[merge_dataset_pick_rest_fields]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/merge_dataset_pick_rest_fields.png
+[delete_dataset_from_map]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/delete_dataset_from_map.png
+[districts_filtered]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/districts_filtered.png
+[map_filtered]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_filtered.png
 [map_no_points]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_no_points.png
 [geom_column_null]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/geom_column_null.png
 [lat_lng_cols]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/lat_lng_cols.png

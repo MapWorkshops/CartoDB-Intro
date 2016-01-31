@@ -3,8 +3,8 @@
 Ya que conocemos la interfaz de CartoDB, vamos a empezar a trabajar en serio con la herramienta. Para ello, crearemos una visualización de las estaciones de [Bicimad](http://www.bicimad.com/) y los ciclocarriles de la ciudad de Madrid. Dicha visualización constará de 3 capas:
 
 * [Capa con **distritos de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/distritos_madrid.kml), creada a partir de la biblioteca de datos de CartoDB. Se trata de un conjunto de datos en formato polígono.
-* [Capa con **ciclocarriles de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.kml), descargada de la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=435a7cd5de319410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos en formato línea.
-* [Capa con **estaciones de Bicimad**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/GBICIMAD.kml), descargada también de la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=f17b841a2c7d6410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos de puntos.
+* [Capa con **ciclocarriles de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.kml), creada a partir del fichero de ciclocarriles descargado de la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=435a7cd5de319410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos en formato línea.
+* [Capa con **estaciones de Bicimad**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/GBICIMAD.kml), descargada de la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=f17b841a2c7d6410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos de puntos.
 
 Con estos tres ejemplos, cubriremos los principales tipos de datos con los que trabajan las bases de datos espaciales.
 
@@ -222,6 +222,8 @@ Establecemos unos nombres un poco más informativos. Lo vemos en la imagen
 
 ![Cambio etiquetas infowindow][infowindow_titles_changed]
 
+**NOTA**: Se ha detectado un error a la hora de intentar pinchar en el icono de cambio de nombres de los campos, únicamente reproducible con navegador Chrome bajo sistema Windows 7. Simplemente, al pinchar en el icono no sucede nada. En ese caso, para poder cambiar los nombres, deberemos editar directamente el HTML del infowindow. Veremos a continuación cómo.
+
 Vamos a ir un poco más lejos, y editar directamente algún detalle del HTML de la plantilla del infowindow. Para ello, pinchamos en el enlace que está a la derecha del anterior, y que tiene la misma forma que el que utilizamos para editar el HTML de la leyenda. Vamos a añadir las unidades de medida en los campos que las necesiten. Lo vemos en la imagen
 
 ![Cambio HTML infowindow][infowindow_html_changed]
@@ -230,6 +232,6 @@ Ahora queda bastante más ilustrativo.
 
 ![Infowindow cambiada][infowindow_changed]
 
-Más adelante veremos como es posible incluso generar el infowindow en tiempo real, para poder pasarle datos dinámicos. Lo haremos usando CartoDB.js, la librería JS de CartoDB.
+Es posible incluso generar el infowindow en tiempo real, para poder pasarle datos dinámicos. Pero para ello, es necesario usar CartoDo.js, la librería JS de CartoDB.
 
 Con esto hemos terminado de personalizar el estilo de nuestra capa de polígonos. Vamos a revisar ahora cómo trabajar con nuestros datos, aplicando filtros a los mismos.
