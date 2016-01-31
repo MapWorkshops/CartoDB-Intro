@@ -14,7 +14,7 @@ Comencemos con la importación de datos.
 
 Vamos a importar los tres juegos de datos anteriores a nuestra cuenta de CartoDB. Para ello, en primer lugar, crearemos un mapa, mediante el botón *New Map* que ya hemos visto, y elegiremos la opción *Connect dataset*, como se puede ver en la captura
 
-![Conectar dataset](connect_dataset)
+![Conectar dataset][connect_dataset]
 
 Iremos arrastrando y soltando nuestros datos uno a uno, como veremos a continuación.
 

@@ -60,7 +60,7 @@ También es bastante común la realización de mapas que muestran indicadores de
 
 El [mapa del olor de las calles de Londres](http://www.di.unito.it/~schifane/smellymaps/index.html)
 
-![Olor calles Londres](smell_london_streets)
+![Olor calles Londres][smell_london_streets]
 
 El [mapa en tiempo real de incendios en el Sudeste Asiático](https://team.cartodb.com/u/santiagoa/viz/d5875ef2-426e-11e5-b057-0e4fddd5de28/embed_map)
 
