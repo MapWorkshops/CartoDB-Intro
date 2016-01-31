@@ -2,37 +2,25 @@
 
 Ya que conocemos la interfaz de CartoDB, vamos a empezar a trabajar en serio con la herramienta. Para ello, crearemos una visualización de las estaciones de [Bicimad](http://www.bicimad.com/) y los ciclocarriles de la ciudad de Madrid. Dicha visualización constará de 3 capas:
 
-* [Capa con **distritos de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/distritos_madrid_nogeo.csv), creada a partir de la biblioteca de datos de CartoDB. Se trata de un conjunto de datos en formato polígono.
-* [Capa con **ciclocarriles de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.kml),  descargada la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=435a7cd5de319410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos en formato línea.
+* [Capa con **distritos de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/distritos_madrid.kml), creada a partir de la biblioteca de datos de CartoDB. Se trata de un conjunto de datos en formato polígono.
+* [Capa con **ciclocarriles de la ciudad de Madrid**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.kml), descargada de la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=435a7cd5de319410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos en formato línea.
 * [Capa con **estaciones de Bicimad**](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/GBICIMAD.kml), descargada también de la [web de datos abiertos de la Comunidad de Madrid](http://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=f17b841a2c7d6410VgnVCM1000000b205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD). Se trata de un conjunto de datos de puntos.
 
 Con estos tres ejemplos, cubriremos los principales tipos de datos con los que trabajan las bases de datos espaciales.
-
-Adicionalmente, creamos un segundo mapa que contenga un solo conjunto de datos, mostrando [trazas de un viaje en bicicleta entre dos puntos de Madrid](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/home_to_job.geojson). Con este conjunto de datos, construiremos una visualización dinámica para mostrar en nuestro mapa.
 
 Comencemos con la importación de datos.
 
 ## Importando datos
 
-Cuando trabajamos con datos de fuentes externas, es muy común que nos enfrentemos a problemas como:
+Vamos a importar los tres juegos de datos anteriores a nuestra cuenta de CartoDB. Para ello, en primer lugar, crearemos un mapa, mediante el botón *New Map* que ya hemos visto, y elegiremos la opción *Connect dataset*, como se puede ver en la captura
 
-* Datos en diferentes formatos (CSV, Excel, JSON, SHP, KML, etc)
-* Datos sin geolocalizar
-* Datos con errores topológicos
-* Datos sin contextualizar (ej: todas las columnas se interpretan como cadenas de texto)
-* ...
+![Conectar dataset](connect_dataset)
 
-Es labor del profesional GIS el preveer, entender y solucionar esos contratiempos. Existen herramientas que facilitan nuestra labor. CartoDB es una de ellas.
-
-Para empezar, vamos a crear nuestro mapa, usando como fuentes de datos las 3 capas que hemos mencionado:
-
-* [Distritos de la ciudad de Madrid](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/distritos_madrid_nogeo.csv)
-* [Ciclocarriles de la ciudad de Madrid](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.kml)
-* [Estaciones de Bicimad](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/GBICIMAD.kml)
+Iremos arrastrando y soltando nuestros datos uno a uno, como veremos a continuación.
 
 ### Creando nuestro mapa: importando puntos
 
-Para ello, basta con que creemos un mapa nuevo, y añadamos, para empezar, la capa de estaciones de Bicimad.
+Empecemos con una capa de puntos: la capa de estaciones de Bicimad.
 
 La capa de estaciones está en [formato KML](https://en.wikipedia.org/wiki/Keyhole_Markup_Language), un lenguaje de marcado utilizado para representación de datos en Google Earth. Como este formato es uno de los [aceptados de manera nativa por CartoDB](http://docs.cartodb.com/cartodb-editor/datasets/#supported-file-formats), bastará con que arrestremos el fichero a nuestro Dashboard, y la importación se hará de manera automática.
 
@@ -61,7 +49,7 @@ Para importar nuestra capa de líneas con los ciclocarriles de Madrid, pinchamos
 
 ![Nueva capa][add_new_layer]
 
-Volveremos a ver la pantalla de importanción de datos, donde podremos arrastrar nuestro [fichero de líneas](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/ciclocarriles_madrid.geojson). Tras ello, vemos como nuestro mapa se ha modificado para mostrarnos ambos conjuntos de datos, y un menú lateral derecho por cada capa añadida.
+Volveremos a ver la pantalla de importanción de datos, donde podremos arrastrar nuestro fichero de líneas. Tras ello, vemos como nuestro mapa se ha modificado para mostrarnos ambos conjuntos de datos, y un menú lateral derecho por cada capa añadida.
 
 ![Mapa con dos capas][two_layers_map]
 
@@ -70,87 +58,42 @@ Al estar utilizándose el mismo color por defecto para ambos tipos de dato, el m
 
 ### Creando nuestro mapa: importando polígonos
 
-Finalmente, importaremos la capa que contiene los distritos de la ciudad de Madrid, que es un mapa de polígonos. Repetimos el mismo proceso que realizamos para la capa de líneas, y añadimos nuestra [capa de polígonos](https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/data/distritos_madrid_nogeo.csv).
-
-Cuando los datos están importados, nos fijamos en que no aparece nada nuevo en nuestro mapa. Así que, una vez más, volvemos a nuestros datos. Vemos dos detalles interesantes.
-
-* La columna *the_geom*, que es la que almacena la geometría, no es un polígono, sino un punto.
-* Hay una columna llamada *cartodb_georef_status*, que contiene valores booleanos.
-
-![Mapa autogeoreferenciado][autoref_map]
-
-Lo que ha sucedido aquí es que nuestro conjunto de datos no contenía una columna de tipo geométrica, de manera que CartoDB ha intentado generarla automáticamente, **intentado decidir la geometría a partir de las columnas presentes**.
-
-El intento que ha hecho CartoDB ha sido a partir del campo *nombre*, que contiene el nombre de cada uno de los distritos de Madrid. Ese nombre le ha servido para geolocalizar de manera correcta algunas ubicaciones, pero creando un tipo de dato *point*. Es el caso de barrios como Arganzuela, Retiro o Chamartín. En otros casos, solo con el nombre no era posible determinar si era un barrio de Madrid u otro tipo de región administrativa. En el caso de Tetuán o Salamanca, por ejemplo, se ha generado un punto en las ciudades con el mismo nombre. Por último, ha habido casos en los que el geolocalizador automático no ha encontrado nada. Es el caso de Fuencarral-El Pardo o Moncloa-Aravaca.
-
-Entendemos ahora, por tanto, el significado de la columna *cartodb_georef_status*. Simplemente nos informa de si ese registro concreto ha podido ser geolocalizado o no.
-
-La intención de este ejercicio era demostrar cómo CartoDB intenta ayudarnos en la tarea de georeferenciar nuestros datos, incluso si no le hemos dado ninguna pista para ello. Lo que se hace *detrás de las cortinas* es simplemente intentar aplicar todas las opciones de georreferenciación presentes en la herramienta, y que ya hemos visto en el capítulo de *Un paseo por la interfaz de CartoDB*.
-
-Para más información sobre las capacidades de georreferenciación de CartoDB, se puede consultar [este artículo de la documentación oficial](http://docs.cartodb.com/tutorials/how_to_georeference/)
-
-En cualquier caso, a pesar de la georreferenciación parcial que nos ha proporcionado CartoDB, lo que nosotros queremos son polígonos representando distritos, no puntos. ¿Cómo los obtenemos?
-
-Fijémonos en la columna *geom_text* de la tabla
-
-![Texto representando geometría][pol_text]
-
-Lo que tenemos ahí es una definición de una geometría poligonal en [formato WKT](https://en.wikipedia.org/wiki/Well-known_text). Un lenguaje de marcado utilizado para representar geometrías vectoriales en un sistema de referencia espacial.
-
-Mediante este lenguaje, se pueden especificar de manera sencilla geometrías de diferentes tipos. Estas geometrías están definidas de manera oficial en la [*OpenGIS Simple Features Specification for SQL* ](http://www.opengeospatial.org/standards/sfs), un estándar de la [OGC](http://www.opengeospatial.org/). También conocido, de manera abreviada, como *OGC SFS*.
-
-Este estándar está aceptado oficialmente por PostGIS, de manera que podremos utilizarlo. Lo que tenemos en nuestro caso es un campo de tipo texto que contiene una definición OGC de un multipolígono. Mediante el uso de la función [ST_GeomFromText](http://www.postgis.org/docs/ST_GeomFromText.html) de PostGIS, podremos convertir la definición en una geometría y almacenarla en la columna *the_geom*. Vamos a la pestaña *SQL* del menú lateral, y escribimos la siguiente sentencia SQL:
-
-```sql
-update distritos_madrid_nogeo set the_geom = st_setsrid(st_geomfromtext(geom_text), 4326)
-```
-
-Vemos que, efectivamente, nuestro mapa muestra ahora polígonos representando distritos de la ciudad de Madrid. Más tarde les daremos estilo para mejorar nuestra visualización
+Finalmente, importaremos la capa que contiene los distritos de la ciudad de Madrid, que es un mapa de polígonos.
 
 ![Madrid con polígonos][madrid_with_pols]
 
-Hemos tenido que utilizar también la función [st_setsrid](http://www.postgis.org/docs/ST_SetSRID.html), porque la definición de nuestros polígonos no incluía información sobre el [sistema de referencia](https://en.wikipedia.org/wiki/Spatial_reference_system) de nuestros datos. En PostGIS, existe una tabla especial llamada *spatial_ref_sys* donde se encuentran identificadores numéricos de los sistemas de referencia espacial más utilizados. Estos identificadores numéricos también están definidos oficialmente, y se pueden consultar en línea en la web [http://spatialreference.org/](http://spatialreference.org/).
+Tras haber importado nuestros datos, nos fijamos en un detalle: la capa de polígonos queda encima de las demás, de manera que las otras se ven poco.
 
-En nuestro caso particular, hemos dado por hecho que el sistema de referencia utilizado es el popular WGS84, basado en el [*World Geodetic System datum*](http://www.linz.govt.nz/data/geodetic-system/datums-projections-heights/geodetic-datums/world-geodetic-system-1984-wgs84), utilizado en el sistema de navegación GPS, y que utiliza coordenadas latitud, longitud para definir la posición de un objeto sobre el globo terráqueo. Dicho sistema de referencia está indexado mediante el identificador 4326 de la tabla *spatial_ref_sys*, y eso es lo que significa el segundo argumento que le hemos pasado a la función *st_setsrid*. Podemos consultar la definición oficial del SRID 4326 desde [este enlace](http://spatialreference.org/ref/epsg/wgs-84/).
+![Polígonos tapando capas][polygon_layer_first]
 
-Un estudio profundo de los sistemas de referencia espaciales escapa del ámbito de este manual. Únicamente se ha querido dar este breve apunte porque es bastante habitual que nos encontremos situaciones como la que hemos enfrentado ahora:
+Si prestamos atención al menú lateral, vemos que tenemos nuestras tres capas apiladas, en el orden en que las hemos ido añadiendo.
 
-* Datos no georreferenciados.
-* Información de ubicación espacial (latitud, longitud) no disponible.
-* Definiciones de geometrías espaciales incompletas.
+![Menú lateral capas][map_piled_layers_menu]
 
-Es en estos casos donde, para construir una visualización de datos espaciales, deberemos tener unos conocimientos mínimos sobre sistemas de información geográfica que nos permitan *limpiar* o corregir nuestros datos.
+Como lo que queremos es que nuestra capa de polígonos quede en la parte inferior de la pila, lo que haremos será simplemente **pinchar y arrastrar las pestañas del menú lateral derecho para colocarlas en el orden deseado**. Esto es:
 
-Veremos a continuación cómo darles estilos a nuestros datos, y crear con ellos una visualización que tenga sentido
+ * Distritos de Madrid, en la parte inferior
+ * Ciclocarriles de Madrid, en segundo lugar
+ * Estaciones de Madrid, en la parte superior
+
+ Así es como deben quedar las capas, tras reubicarlas
+
+ ![Menú lateral capas reorganizadas][map_piled_layers_menu_reorg]
+
+ Y así se verá nuestro mapa
+
+ ![Polígonos por debajo][polygon_layer_background]
+
+Una vez colocadas las capas en orden, vamos a darle estilo a nuestros datos, y crear con ellos una visualización que tenga sentido
 
 ## Estilando nuestros datos
 
-Ahora que ya tenemos nuestros datos importados en CartoDB, vamos a darles algo de estilo y a enriquecer nuestro mapa con algo de información extra.
-
-En la parte derecha de nuestra vista de mapa, deberíamos ver apilados tres menús, uno para cada conjunto de datos
+Para estilar nuestros datos, vamos a fijarnos una vez más en el menú lateral derecho de la vista de mapa.
 
 ![Menús laterales vista de mapa][side_menus_map_view]
 
-Cuando entremos en uno cualquiera, se nos llevará automáticamente a la pestaña de *wizards*. Desde los *wizards*, podremos ajustar el tipo de visualización que queremos para nuestros datos, así como los colores, rellenos, anchos de líneas y otros pocos parámetros visuales.
+Vamos a utilizar los *wizards* para elegir la manera en la que queremos visualizar nuestros datos. Empezaremos por la capa de puntos (la capa superior)
 
-Ya en el *wizard*, podemos experimentar eligiendo los diferentes tipos de visualizaciones, y ver qué efecto producen. En términos generales, esto es lo que muestra cada visualización.
-
-* ***Simple***: Visualización básica. Cada elemento por separado, todos con la misma forma y tamaño.
-* ***Cluster***: Cada elemento representa un determinado número de puntos encerrados en una determinada región, llamada *cluster*.
-* ***Choropleth***: Se utiliza para pintar cada elemento de un color, en función de una variable numérica obtenida a partir de una o más columnas. Es especialmente útil en el caso de polígonos, para comparar unos con otros.
-* ***Category***: También se utiliza para pintar cada elemento de un color, pero esta vez en función de una variable cualitativa (una categoría). Es especialmente útil cuando tenemos nuestros elementos organizados por una cualidad que comparten de manera grupal.
-* ***Bubble***: El tamaño de cada elemento va en función del valor numérico de otra columna de nuestro registro. No se puede usar con polígonos, pero es útil a la hora de comparar cuantitivamente valores puntuales.
-* ***Torque***: Visualización dinámica para una progresión de puntos que se distribuyen a lo largo del tiempo. Acepta diferentes tipos de formato para la variable temporal, siendo el formato por defecto YYYY-DD-MMThh:mm:ss. Pero también acepta año, año y mes, año, mes y día, o solo horas.
-* ***Heatmap***: Es una variación de Torque, que crea mapas de calor para datos temporales. Las áreas con mayor intensidad de color son aquellas que contienen mayor concentración de puntos.
-* ***Torque Cat***: Es otra variación de Torque. Muestra también una animación de puntos, pero los colorea de manera diferente en función de una variable cualitativa (una categoría)
-* ***Intensity***: Es parecido a un *heatmap*. Muestra la densidad de puntos, oscureciendo las áreas con mayor concentración de los mismos, pero aquí se mantienen los puntos por separado. Los *heatmap* son más apropiadas para visualizaciones lejanas (en las que nos interesan áreas grandes) o animadas (queremos ver el crecimiento y concentración de elementos a lo largo del tiempo). Los mapas de intensidad, en cambio, son más apropiados cuando estamos interesados en estratificar la ocurrencia de datos por áreas. Pensados para una visualización más de cerca, se ven más enriquecidos si usamos infowindows. Los veremos más adelante.
-* ***Density***: Los datos son agregados en figuras de tipo hexagonal, que son coloreadas más oscuras cuantos más datos agregados contengan. Esta visualización no permite infowindows, así que, si queremos añadirlos, es mejor que usemos una visualización de tipo *Intensity*
-
-En cualquiera de los casos, cuando toquemos los parámetros de nuestra visualización, **lo que estaremos haciendo realmente es modificar el CartoCSS** que se aplica a la misma. CartoCSS es un lenguaje de estilado de mapas web, similar a CSS en el sentido de que nos permite parametrizar el aspecto y comportamiento de los elementos de nuestra visualización. Fue creado por Mapbox, y podemos consultar la referencia oficial online en [este enlace](https://github.com/mapbox/carto/blob/master/docs/latest.md). Pero dado que Mapbox abandonó oficialmente el mantenimiento de la documentación de CartoCSS, es posible que nos interese más consultar la referencia de CartoCSS creada por CartoDB en [este otro enlace](http://docs.cartodb.com/cartodb-platform/cartocss/).
-
-Si queremos profundizar más en qué tipo de visualización es apropiada en función de nuestros datos, podemos consultar este [tutorial de CartoDB academy](http://academy.cartodb.com/courses/06-intermediate-design/lesson-1.html)
-
-Vamos a empezar a estilar nuestros datos de tipo punto.
 
 ### Estilando nuestros datos de tipo punto
 
@@ -158,11 +101,11 @@ Al pinchar en el menú número 1, se nos despliega dicho menú. Para aclararnos 
 
 ![Desactivando otras capas][disabling_other_layers]
 
-En esta visualización, queremos ver cada una de las estaciones de Bicimad por separado, de manera que elegimos una visualización de tipo *Simple*. Con ese tipo de visualización, se nos ofrecen unas pocas opciones de parametrización.
+En esta visualización, queremos ver cada una de las estaciones de Bicimad por separado, de manera que elegimos una visualización de tipo *Simple* (profundizaremos más en tipos de visualización más adelante). Con ese tipo de visualización, se nos ofrecen unas pocas opciones de parametrización.
 
 ![Wizard visualizacion simple de puntos][wizard_simple_viz]
 
-Lo primero que vamos a hacer es cambiar el color del icono a rojo. Para ello, pinchamos en el botón de cambio de color de la opción *Marker fill*, y elegimos el azul, como se puede ver en la imagen
+Lo primero que vamos a hacer es cambiar el color del icono a azul. Para ello, pinchamos en el botón de cambio de color de la opción *Marker fill*, y elegimos el azul, como se puede ver en la imagen
 
 ![Cambio color icono marker][change_color_icon]
 
@@ -202,15 +145,7 @@ No vamos a hacer más con nuestra capa de líneas. Pasemos a la capa de polígon
 
 ### Estilando nuestros datos de tipo polígono
 
-Por último, activamos la visibilidad de nuestra capa de tipo polígono, y nos dirigimos al *wizard*. Lo primero que nos llama la atención es que la capa de polígonos tapan las otras dos capas de datos.
-
-![Polígonos tapando capas][polygon_layer_first]
-
-Vamos a arreglarlo moviendo la capa de polígonos abajo del todo. Para ello, solo tenemos que pinchar en el menú lateral derecho, a la altura del número que indica la capa, y arrastrar la capa hacia abajo. El resultado es mucho más claro
-
-![Polígonos por debajo][polygon_layer_background]
-
-Dada la naturaleza de nuestros datos poligonales, hay dos tipos de visualizaciones que tienen sentido:
+Por último, activamos la visibilidad de nuestra capa de tipo polígono, y nos dirigimos al *wizard*. Dada la naturaleza de nuestros datos poligonales, hay dos tipos de visualizaciones que tienen sentido:
 
 * Mapa de categorías, usando la columna de *nombre* como categoría.
 * Mapa de coropletas, usando la columna de *pob_density*, de densidad de población, como columna numérica.

@@ -5,9 +5,16 @@
 [alcatraz]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/alcatraz.png
 [elecciones2011]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/elecciones_2011.png
 [polucionla]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/polucion_la.png
+[multas_madrid]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/multas_madrid.png
+[quejas_metro_madrid]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/quejas_metro_madrid.png
+[smell_london_streets]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/smell_london_streets.png
+[riots_africa_oct2014]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/riots_africa_oct2014.png
+[real_time_asia_fires]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/real_time_asia_fires.png
+[ashley_madison_male_female_ratio]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/ashley_madison_male_female_ratio.png
 [quitanieves]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/quitanieves.png
 [cordoba]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cordoba.png
 [beyonce]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/beyonce.png
+[zidane_vs_benitez]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/zidane_vs_benitez.png
 [lisbon2014]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/lisbon2014.png
 [sunrise]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/sunrise.png
 [starwars]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/starwars_galaxy.png
@@ -40,6 +47,9 @@
 [export_formats]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/export_formats.png
 [privacy_options]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/privacy_options.png
 [publish_options]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/publish_options.png
+[connect_dataset]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/connect_dataset.png
+[map_piled_layers_menu]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_piled_layers_menu.png
+[map_piled_layers_menu_reorg]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/map_piled_layers_menu_reorg.png
 [cartodb_column_filters]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filters.png
 [cartodb_filter_column]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_filter_column.png
 [cartodb_column_filter_range]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/cartodb_column_filter_range.png

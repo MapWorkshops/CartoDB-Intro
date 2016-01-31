@@ -22,7 +22,7 @@ Entre las muchas funcionalidades de CartoDB, cabe destacar las siguientes:
 * Posibiilidad de **compartir mapas rápidamente**, e integrarlos en cualquier otra aplicación web
 * Diversas **APIs** para extender sus funcionalidades básicas (JavaScript API, SQL API, entre otras)
 
-CartoDB se utiliza en una amplia variedad de campos, como [banca](https://cartodb.com/industries/banking-and-finance/), [business inteligence](https://cartodb.com/industries/business-intelligence-and-analytics/) u [observación de la Tierra](https://cartodb.com/industries/earth-observation-and-space/), por citar solo unos pocos.
+CartoDB se utiliza en una amplia variedad de campos, como [banca](https://cartodb.com/solutions/banking-and-finance/), [business inteligence](https://cartodb.com/solutions/business-intelligence-and-analytics/) u [observación de la Tierra](https://cartodb.com/solutions/earth-observation-and-space/), por citar solo unos pocos.
 
 Veremos a continuación algunos ejemplos ilustrativos de la potencia de CartoDB aplicada a diversos campos.
 
@@ -54,19 +54,25 @@ observar es apabullante
 
 La realización de mapas electorales con CartoDB se ha convertido en algo tan común que los propios desarrolladores publicaron [un tutorial](http://docs.cartodb.com/tutorials/electoral_map/) que explica cómo hacerlos.
 
-También es bastante común la realización de mapas que muestran mediciones en tiempo real de parámetros diversos de un determinado municipio. Como ejemplo, tenemos el [mapa de polución de Los Ángeles](http://graphics.latimes.com/responsivemap-pollution-burdens/).
+También es bastante común la realización de mapas que muestran indicadores de interés social. Como ejemplo, tenemos el [mapa de incidentes violentos en África en Octubre 2014](http://team.cartodb.com/u/santiagoa/viz/bd69bca0-7449-11e4-88e4-0e018d66dc29/public_map).
 
-![Polución LA][polucionla]
+![Violencia África Octubre 2014][riots_africa_oct2014]
 
-O el [mapa de ubicación de máquinas quitanieves en Chicago](http://clearstreets.org/)
+El [mapa del olor de las calles de Londres](http://www.di.unito.it/~schifane/smellymaps/index.html)
 
-![Quitanieves Chicago][quitanieves]
+![Olor calles Londres](smell_london_streets)
 
-En cuanto a eventos de relevancia social, se han popularizado bastante los mapas animados de Twitter en tiempo real realizados mediante la herramienta [Torque](http://blog.cartodb.com/torque-public/). Algunos ejemplos interesantes son:
+El [mapa en tiempo real de incendios en el Sudeste Asiático](https://team.cartodb.com/u/santiagoa/viz/d5875ef2-426e-11e5-b057-0e4fddd5de28/embed_map)
 
-El [mapa de tweets hablando del nuevo álbum de Beyoncé](https://srogers.cartodb.com/viz/337d9194-6458-11e3-85b5-e5e70547d141/public_map) tras su lanzamiento, el 13 de Diciembre de 2013.
+O el mapa que muestra el ratio hombre/mujer de usuarios de AshleyMadison en las ciudades del mundo
 
-![Beyonce][beyonce]
+![Ratio hombre/mujer Ashley Madison][ashley_madison_male_female_ratio]
+
+En los ejemplos anteriores, hemos visto algunos mapas animados. Se han popularizado bastante los mapas animados de Twitter en tiempo real realizados mediante la herramienta [Torque](http://blog.cartodb.com/torque-public/). Algunos ejemplos interesantes son:
+
+El [mapa de tweets hablando de Zidane como sustituto de Benitez en el Real Madrid](https://team.cartodb.com/u/piensaenpixel/viz/f46f2f12-b54f-11e5-b04f-0e5db1731f59/public_map).
+
+![Zidane vs Benítez][zidane_vs_benitez]
 
 El [mapa de cómo se vivió en Twitter la final de Copa de Europa de 2014](http://cartodb.github.io/lisbon-2014), entre Real Madrid y Atlético de Madrid.
 
@@ -110,7 +116,7 @@ Vamos entonces a la pantalla de creación de mapa, donde lo primero que se nos p
 
 * **Connect dataset**: Se nos mostrará la pestaña de importación de datos, desde donde podremos subir nuestros propios ficheros, o conectar con servicios de terceros para obtener un flujo de datos con el que trabajar. En función del tipo de cuenta que tengamos, podremos acceder a más o menos servicios de terceros
 
-* **Usar dataset**: Si ya tenemos datos importados, podemos usarlos para nuestro mapa. CartoDB permite crear visualizaciones multicapa de manera sencilla, así que podremos incluir varios juegos de datos ya existentes, si lo deseamos.
+* **Usar nuestro propio dataset**: Si ya tenemos datos importados, podemos usarlos para nuestro mapa. CartoDB permite crear visualizaciones multicapa de manera sencilla, así que podremos incluir varios juegos de datos ya existentes, si lo deseamos.
 
 * **Data library**: CartoDB pone a nuestra disposición un repositorio de datos desde donde podemos importar directamente datasets a nuestra cuenta con un solo clic.
 
@@ -120,17 +126,19 @@ Para crear rápidamente un mapa, vamos a utilizar alguno de los juegos de datos 
 
 ![Crear mapa a partir de datos existentes][new_map_from_library]
 
+**Nota**: Es posible que veamos algunos nombres de mapas escritos en rojo. Esto únicamente significa que el juego de datos que vamos a importar es grande (de varios cientos de MB).
+
 Tras unos segundos, seremos llevados a nuestra vista de mapa, desde donde podremos ver la visualización recién creada. En este caso, un mapa de polígonos
 
 ![Mapa de polígonos][pol_map]
 
 Vayamos parte por parte, viendo lo que significa cada elemento en pantalla.
 
-En la parte superior izquierda, tenemos el nombre del mapa. Como nuestro dataset.
+En la parte superior izquierda, tenemos el nombre del mapa, que podemos cambiar si lo deseamos.
 
 ![Nombre del mapa][map_name]
 
-A través del enlace *Edit metadata*, también podremos añadir algunos metadatos a nuestro mapa, que nos ayudará a tener nuestros datos categorizados y fácilmente accesibles
+A través del enlace *Edit metadata*, también podemos añadir algunos metadatos a nuestro mapa, lo que nos ayudará a tener nuestros datos categorizados y fácilmente accesibles
 
 ![Metadatos del mapa][map_metadata]
 
@@ -146,7 +154,7 @@ Basta con pinchar en la pequeña flecha que acompaña a los nombres de las colum
 
 Veremos más adelante como, si usamos datos importados por nosotros mismos, tendremos aquí más opciones de personalización. Pudiendo cambiar incluso el tipo de dato de cada columna. Un ejemplo muy típico de la utilidad de esta funcionalidad es transformar cadenas de texto representando fechas/horas en columnas de tipo *date*. De esta forma, podremos utilizar las [funciones propias de fecha/hora de PostgreSQL](http://www.postgresql.org/docs/current/static/functions-datetime.html).
 
-En la vista de tabla también observamos que hay un menú lateral en la parte derecha. En los siguientes apartados veremos para qué sirven las opciones de este menú. Por ahora, basta con saber que, en la vista de tabla, sirve para ayudarnos a filtrar nuestros datos.
+En la vista de tabla también observamos que hay un menú lateral en la parte derecha. En los siguientes apartados veremos para qué sirven las opciones de este menú. Por ahora, basta con saber que, en la vista de tabla, sirve para ayudarnos a filtrar nuestros datos. Opción a la que también podremos acceder a través de la flechita de ordenación de cada columna.
 
 ![Menú lateral vista de tabla][side_menu_table_view]
 
@@ -159,7 +167,7 @@ En dicha barra de herramientas, se nos permitirá añadir ciertos *adornos* a nu
 * Un título
 * Un cuadro de texto
 * Una anotación
-* Una Imagen
+* Una Imagen, introduciendo directamente su URL.
 
 ![Barra de herramientas de mapa desplegada][map_toolbar_options]
 

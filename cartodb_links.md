@@ -1,28 +1,11 @@
 Colección de enlaces interesantes sobre CartoDB. Algunos de ellos se pueden encontrar en la [galería de la web de CartoDB](https://cartodb.com/gallery/)
 
-# Tutoriales para desarrolladores que quieran trabajar con CartoDB
-
-* [Página oficial de tutoriales de CartoDB](http://docs.cartodb.com/tutorials/)
-* [Página oficial de cursos de CartoDB](http://academy.cartodb.com/)
-* [Formatos de fichero aceptados por CartoDB](http://docs.cartodb.com/cartodb-editor/datasets/#supported-file-formats)
-* [Tutorial de Odyssey](http://cartodb.github.io/odyssey.js/documentation/)
-* [Referencia de Torque](http://docs.cartodb.com/cartodb-platform/torque-js/)
-* [Referencia de CartoCSS](http://docs.cartodb.com/cartodb-platform/cartocss/)
-* [Guía de georreferenciación de datos con CartoDB](http://docs.cartodb.com/tutorials/how_to_georeference/)
-* [Guía de personalización de infowindows](https://gist.github.com/andrewxhill/8655774)
-* [Documentación oficial de los parámetros de Torque, para desarrolladores](https://github.com/CartoDB/torque-reference/blob/master/1.0.0/reference.json)
-* [Proyecto oficial CartoDB en Github](https://github.com/CartoDB/cartodb)
-* [Cómo servir nuestras propias teselas desde Google Cloud Storage](http://blog.cartodb.com/tiles-on-gcs/)
-* [Diferencia entre los esquemas TMS y XYZ para la generación de teselas](https://gist.github.com/tmcw/4954720)
-* [Página de Wikipedia sobre el formato WKT para la definición de datos espaciales en PostGIS](https://en.wikipedia.org/wiki/Well-known_text)
-* [Especificación oficial de las geometrías aceptadas por CartoDB](http://www.opengeospatial.org/standards/sfs)
-* [Documentación sobre métodos de cuantificación para hacer mapas de coropletas en CartoDB](http://docs.cartodb.com/cartodb-editor/maps/#choropleth)
-
-# Sectores:
+# Sectores más importantes donde CartoDB está presente:
 
 * [Banca y finanzas](https://cartodb.com/solutions/banking-and-finance/)
 * [Business Intelligence](https://cartodb.com/solutions/business-intelligence-and-analytics/)
 * [Observación de la Tierra](https://cartodb.com/solutions/earth-observation-and-space/)
+
 
 # Algunos grandes proyectos desarrollados con CartoDB
 
@@ -58,7 +41,7 @@ Colección de enlaces interesantes sobre CartoDB. Algunos de ellos se pueden enc
 * [Mapa de quejas acerca del Metro de Madrid](https://congosto.cartodb.com/viz/e5da12e2-9fe7-11e4-bc43-0e853d047bba/public_map)
 * [Mapa de tipos de árboles en la ciudad de Nueva York](http://jillhubley.com/project/nyctrees/#all)
 * [Mapa de olor de las calles de Londres](http://www.di.unito.it/~schifane/smellymaps/index.html)
-* [Mapa en tiempo real de los indendios en la parte sur de Asia](https://team.cartodb.com/u/santiagoa/viz/d5875ef2-426e-11e5-b057-0e4fddd5de28/public_map)
+* [Mapa en tiempo real de los incendios en el sudeste asiático](https://team.cartodb.com/u/santiagoa/viz/d5875ef2-426e-11e5-b057-0e4fddd5de28/public_map)
 * [Mapa de incidentes violentos en África en Octubre 2014](http://team.cartodb.com/u/santiagoa/viz/bd69bca0-7449-11e4-88e4-0e018d66dc29/public_map)
 * [Mapa 3D de edificios de San Francisco](https://team.cartodb.com/u/saleiva/viz/989925be-262d-11e5-b4f6-0e4fddd5de28/public_map)
 
@@ -74,7 +57,7 @@ Colección de enlaces interesantes sobre CartoDB. Algunos de ellos se pueden enc
 * [Tweets mencionando la palabra *sunrise* a lo largo de un día, a medida que sale el sol](http://cartodb.s3.amazonaws.com/static_vizz/sunrise.html)
 * [Tweets mencionando el festival #Diwali2014 a medida que sale el sol](http://bl.ocks.org/anonymous/raw/b9b7c7d6de1c6398e435/)
 * [Simulación de la fuga de Alcatraz en 1962](https://www.washingtonpost.com/news/morning-mix/wp/2014/12/15/the-alcatraz-escapees-could-have-survived-and-this-interactive-model-proves-it/)
-* [Mapa de tweets mencionando la contratación de Zidane como entrenador del Real Madrid](https://team.cartodb.com/u/piensaenpixel/viz/f46f2f12-b54f-11e5-b04f-0e5db1731f59/public_map)
+* [Mapa de tweets hablando de Zidane como sustituto de Benitez en el Real Madrid](https://team.cartodb.com/u/piensaenpixel/viz/f46f2f12-b54f-11e5-b04f-0e5db1731f59/public_map)
 * [Mapa de tweets sobre las elecciones municipales 2015 en España](https://team.cartodb.com/u/piensaenpixel/viz/995e0c70-0059-11e5-a962-0e0c41326911/public_map)
 * [Mapa de vuelos entre los aeropuertos con más tráfico del mundo](http://flightroutes.geographica.gs/)
 * [Mapa de conexiones de la red TOR](https://torflow.uncharted.software/#/)
@@ -82,7 +65,6 @@ Colección de enlaces interesantes sobre CartoDB. Algunos de ellos se pueden enc
 * [Mapa de tweets el día de la salida de un disco de Beyoncé](https://srogers.cartodb.com/viz/337d9194-6458-11e3-85b5-e5e70547d141/public_map)
 * [Mapa de la final de Copa de Europa Real Madrid - Atlético de Madrid](http://cartodb.github.io/lisbon-2014/#/2/24.5/-7.0/0)
 * [Mapa de artículos periodísticos entre 1880 y 1940 hablando sobre linchamientos](http://yale.cartodb.com/u/mdweaver/viz/ffd06ece-8545-11e4-a898-0e018d66dc29/public_map)
-
 
 
 # Mapas de Odyssey
@@ -96,3 +78,22 @@ Colección de enlaces interesantes sobre CartoDB. Algunos de ellos se pueden enc
 * [Tour por edificios históricos de Escocia](http://alasdair.cartodb.com/viz/1332c872-a887-11e4-8c45-0e9d821ea90d/embed_map?zoom=14&center_lat=55.948595&center_lon=-3.199913)
 * [Mapa con frases de Maya Angelou](http://com.cartodb.visualizations.s3.amazonaws.com/v/maya-angelou/index.html#0)
 * [El viaje del HMS Beagle](http://bl.ocks.org/anonymous/raw/7d67c4ef3348192da613/?__hstc=26280290.ab5f76548b8f08714a4e4c6c33f587e7.1421332770627.1422923447351.1422937868002.39&__hssc=26280290.1.1422937868002&__hsfp=144419593)
+
+# Tutoriales de CartoDB
+
+* [Página oficial de tutoriales de CartoDB](http://docs.cartodb.com/tutorials/)
+* [Página oficial de cursos de CartoDB](http://academy.cartodb.com/)
+* [Formatos de fichero aceptados por CartoDB](http://docs.cartodb.com/cartodb-editor/datasets/#supported-file-formats)
+* [Cómo elegir la representación más adecuada en función de la naturaleza de nuestros datos](http://academy.cartodb.com/courses/06-intermediate-design/lesson-1.html)
+* [Tutorial de Odyssey](http://cartodb.github.io/odyssey.js/documentation/)
+* [Referencia de Torque](http://docs.cartodb.com/cartodb-platform/torque-js/)
+* [Referencia de CartoCSS](http://docs.cartodb.com/cartodb-platform/cartocss/)
+* [Guía de georreferenciación de datos con CartoDB](http://docs.cartodb.com/tutorials/how_to_georeference/)
+* [Guía de personalización de infowindows](https://gist.github.com/andrewxhill/8655774)
+* [Documentación oficial de los parámetros de Torque, para desarrolladores](https://github.com/CartoDB/torque-reference/blob/master/1.0.0/reference.json)
+* [Proyecto oficial CartoDB en Github](https://github.com/CartoDB/cartodb)
+* [Cómo servir nuestras propias teselas desde Google Cloud Storage](http://blog.cartodb.com/tiles-on-gcs/)
+* [Diferencia entre los esquemas TMS y XYZ para la generación de teselas](https://gist.github.com/tmcw/4954720)
+* [Página de Wikipedia sobre el formato WKT para la definición de datos espaciales en PostGIS](https://en.wikipedia.org/wiki/Well-known_text)
+* [Especificación oficial de las geometrías aceptadas por CartoDB](http://www.opengeospatial.org/standards/sfs)
+* [Documentación sobre métodos de cuantificación para hacer mapas de coropletas en CartoDB](http://docs.cartodb.com/cartodb-editor/maps/#choropleth)
