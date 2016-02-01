@@ -136,7 +136,7 @@
 [obs5]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/obs5.png
 [obs6]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/obs6.png
 [qt1]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/qt1.png
-[qt3]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/qt2.png
+[qt3]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/qt3.png
 [qt4]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/qt4.png
 [vlc1]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/vlc1.png
 [vlc2]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/vlc2.png
