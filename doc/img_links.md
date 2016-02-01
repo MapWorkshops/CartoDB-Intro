@@ -129,6 +129,8 @@
 [bicimap_station_image_and_address]: https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/bicimap_station_image_and_address.png
 [ejer1_1_resultado]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/ejer1_1_resultado.png
 [ejer1_2_resultado]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/ejer1_2_resultado.png
+[ejer2_1_resultado]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/ejer2_1_resultado.png
+[ejer2_2_resultado]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/ejer2_2_resultado.png
 [obs1]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/obs1.png
 [obs2]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/obs2.png
 [obs3]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/obs3.png
