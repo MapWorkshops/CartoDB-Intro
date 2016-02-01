@@ -1,6 +1,6 @@
-# Integrando CartoDB con Google Maps
+# Apéndice D: Integrando CartoDB con Google Maps
 
-Para terminar, vamos a ver un **ejemplo de uso de las APIs de Google Maps en conjunción con CartoDB**. Concretamente, vamos a ampliar la aplicación para que, al pinchar sobre una de las estaciones de BiciMad, aparezca un infowindow que contenga **una imagen de Google Street View y una dirección física obtenida a partir de geocoding inverso**. Además, **vamos a usar como mapa base un mapa proporcionado por Google**.
+Para terminar, vamos a ver un **ejemplo de uso de las APIs de Google Maps en conjunción con CartoDB**. Concretamente, vamos a ampliar la aplicación del capítulo anterior para que, al pinchar sobre una de las estaciones de BiciMad, aparezca un infowindow que contenga **una imagen de Google Street View y una dirección física obtenida a partir de geocoding inverso**. Además, **vamos a usar como mapa base un mapa proporcionado por Google**. El código se encuentra en la [carpeta *examples/google_maps* de este repositorio de Github](https://github.com/MapWorkshops/CartoDB-Intro/tree/spanish/examples/google_maps)
 
 Veamos, paso a paso, como obtener de Google Maps todo lo que necesitamos.
 

@@ -91,7 +91,7 @@ function main() {
                     var clickPosLatLng = this.model.get('latlng');
 
                     // Set 'address' paragraph to the address of the point, using reverse geocoding
-                    var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+clickPosLatLng[0]+","+clickPosLatLng[1]+"&key=GOOGLE_SERVER_KEY_HERE";
+                    var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+clickPosLatLng[0]+","+clickPosLatLng[1]+"&key=AIzaSyDGZwIpxmpQl_YSwG3h0uUoCiPX2rPZ3oo";
 
                     $.getJSON(url, function(data) {
                         var lat = 0;
@@ -115,7 +115,7 @@ function main() {
                                 // Set img to image of Google Street View on that position
                                 lat = res['geometry']['location']['lat'];
                                 lng = res['geometry']['location']['lng'];
-                                var img_src = 'https://maps.googleapis.com/maps/api/streetview?size=200x150&location=' + lat + ',' + lng +'&heading=151.78&pitch=-0.76&key=GOOGLE_BROWSER_KEY_HERE';
+                                var img_src = 'https://maps.googleapis.com/maps/api/streetview?size=200x150&location=' + lat + ',' + lng +'&heading=151.78&pitch=-0.76&key=AIzaSyDYwTBi33iF0skSeMqZhS3wc5pI9hTIthg';
 
                                 $('#google_image').attr('src', img_src);
                             }
