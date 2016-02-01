@@ -42,7 +42,7 @@ Dado que VLC Player se ha demostrado ineficaz para grabación del escritorio en 
 
 Para grabar nuestro escritorio usando Open Broadcaster Software, lo primero que haremos será abrir el programa, que nos presentará una pantalla en negro
 
-![OBS inicio][obs_1]
+![OBS inicio][obs1]
 
 Como no nos interesa grabar el audio que entra por el micro de nuestro ordenador, lo silenciamos pinchando en el botón de *Configuración*, seleccionando la opción de *Audio* y asegurándonos que aparece *Disabled* en todos los desplegables, tal y como se aprecia en la captura
 
