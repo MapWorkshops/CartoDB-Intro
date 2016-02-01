@@ -24,11 +24,11 @@ En sistemas con Windows 8, Windows 10 y Mac OS X, así como en algunos sistemas 
 
 El primer paso, tras abrir el programa, será elegir la opción *Media --> Open capture device*, o su equivalente en español. En la ventana que se nos abre, vamos a la pestaña de *Capture Device*, seleccionando *Desktop* en *Capture mode*, una tasa de frames por segundo superior a 10fps y, en el botón de la parte inferior, elegimos la opción de *Convert*. Se puede ver en la captura siguiente
 
-![VLC abriendo dispositivo de captura][vlc2]
+![VLC abriendo dispositivo de captura][vlc1]
 
 Tras especificar el directorio de salida (por defecto la carpeta *Videos* del usuario) y el perfil de grabación (Vídeo H264 y formato MP4, por ejemplo), pulsamos en el botón de *Start*. Se ve en la captura
 
-![VLC iniciando grabación][vlc3]
+![VLC iniciando grabación][vlc2]
 
 En este momento, empezaremos a grabar nuestra pantalla, hasta que pulsemos en el botón de detener la grabación en VLC. Se generará un fichero de vídeo en la carpeta *Video* de nuestro usuario.
 

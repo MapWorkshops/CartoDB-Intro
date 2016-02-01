@@ -130,4 +130,13 @@
 [ejer1_1_resultado]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/ejer1_1_resultado.png
 [ejer1_2_resultado]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/ejer1_2_resultado.png
 [obs1]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/obs1.png
-[obs_2]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/obs_2.png
+[obs2]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/obs2.png
+[obs3]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/obs3.png
+[obs4]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/obs4.png
+[obs5]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/obs5.png
+[obs6]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/obs6.png
+[qt1]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/qt1.png
+[qt3]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/qt2.png
+[qt4]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/qt4.png
+[vlc1]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/vlc1.png
+[vlc2]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/vlc2.png
