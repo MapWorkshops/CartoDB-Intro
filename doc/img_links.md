@@ -142,3 +142,9 @@
 [qt4]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/qt4.png
 [vlc1]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/vlc1.png
 [vlc2]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/vlc2.png
+[edit_georeference]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/edit_georeference.png
+[georeference_street_names]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/georeference_street_names.png
+[coordenadas_utm]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/coordenadas_utm.png
+[calles_madrid]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/calles_madrid.png
+[coords_separated_by_comma]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/coords_separated_by_comma.png
+[georef_lat_lng]:https://raw.githubusercontent.com/MapWorkshops/CartoDB-Intro/spanish/doc/img/georef_lat_lng.png
